@@ -37,18 +37,24 @@ const paperBody = document.getElementById("paper-body")
 const imageDimensions = new Map()
 
 function parseMarkdown(text) {
-  const html = text
-    // Headers
+  let processedText = text.replace(/^# .+$/m, "").trim()
+
+  const footnotes = {}
+  processedText = processedText.replace(/^\[\^(\d+)\]:\s*(.+)$/gm, (match, num, content) => {
+    footnotes[num] = content
+    return ""
+  })
+
+  let html = processedText
+    // Headers (H2 and H3 only, H1 removed above)
     .replace(/^### (.+)$/gm, "<h3>$1</h3>")
     .replace(/^## (.+)$/gm, "<h2>$1</h2>")
-    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
     // Bold
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     // Italic
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    // Images - convert to clickable images that open in modal
+    .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref" data-footnote="$1">[$1]</sup>')
     .replace(/!\[([^\]]*)\]$$([^)]+)$$/g, (match, alt, src) => {
-      // Check if it's a reference to an image in our images folder
       const filename = src.replace(/^images\//, "")
       return `<img src="images/${filename}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
     })
@@ -59,7 +65,20 @@ function parseMarkdown(text) {
     // Single newlines to <br>
     .replace(/\n/g, "<br>")
 
-  return "<p>" + html + "</p>"
+  html = "<p>" + html + "</p>"
+
+  const footnoteNums = Object.keys(footnotes)
+  if (footnoteNums.length > 0) {
+    html += '<div class="footnotes"><hr><ol>'
+    footnoteNums
+      .sort((a, b) => Number(a) - Number(b))
+      .forEach((num) => {
+        html += `<li id="fn-${num}">${footnotes[num]}</li>`
+      })
+    html += "</ol></div>"
+  }
+
+  return html
 }
 
 async function init() {

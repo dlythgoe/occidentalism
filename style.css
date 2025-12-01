@@ -305,15 +305,17 @@ body {
   line-height: 1.4;
 }
 
-#paper-image {
+/* Added styles for clickable images in papers */
+.paper-image {
   max-width: 100%;
   margin: 16px 0;
   cursor: pointer;
   border: 1px solid #000000;
   transition: opacity 0.2s ease;
+  display: block;
 }
 
-#paper-image:hover {
+.paper-image:hover {
   opacity: 0.8;
 }
 
@@ -352,6 +354,39 @@ body {
 
 #paper-body a:hover {
   opacity: 0.7;
+}
+
+/* Added footnote styles */
+.footnote-ref {
+  color: #000000;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footnote-ref:hover {
+  text-decoration: underline;
+}
+
+.footnotes {
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 12px;
+  color: #666666;
+}
+
+.footnotes hr {
+  border: none;
+  border-top: 1px solid #000000;
+  margin-bottom: 16px;
+}
+
+.footnotes ol {
+  padding-left: 20px;
+}
+
+.footnotes li {
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
 
 /* Scrollbar styling */
