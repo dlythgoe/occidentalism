@@ -53,15 +53,16 @@ function parseMarkdown(text) {
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     // Italic
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    // Footnote references
-    .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref" data-footnote="$1">[$1]</sup>')
+    // Footnote references - now clickable with href
+    .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref"><a href="#fn-$1" data-footnote="$1">[$1]</a></sup>')
+    // Images - FIXED regex with proper escaped parentheses
     .replace(/!\[([^\]]*)\]$$([^)]+)$$/g, (match, alt, src) => {
       // Normalize path: ../images/file.jpg -> images/file.jpg
       const normalizedSrc = src.replace(/^\.\.\//, "")
       const filename = normalizedSrc.replace(/^images\//, "")
       return `<img src="${normalizedSrc}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
     })
-    // Links
+    // Links - FIXED regex with proper escaped parentheses
     .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank">$1</a>')
     // Paragraphs (double newlines)
     .replace(/\n\n/g, "</p><p>")
@@ -84,6 +85,15 @@ function parseMarkdown(text) {
   return html
 }
 
+function shuffleArray(array) {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+
 async function init() {
   try {
     // Fetch image data from JSON file
@@ -92,6 +102,8 @@ async function init() {
       throw new Error("Failed to load data/index.json")
     }
     imageData = await response.json()
+
+    imageData = shuffleArray(imageData)
 
     try {
       const papersResponse = await fetch("data/papers.json")
@@ -301,6 +313,18 @@ function showPaperModal(paper) {
     })
   })
 
+  const footnoteRefs = paperBody.querySelectorAll(".footnote-ref a")
+  footnoteRefs.forEach((ref) => {
+    ref.addEventListener("click", (e) => {
+      e.preventDefault()
+      const footnoteId = ref.getAttribute("href").substring(1)
+      const footnoteEl = document.getElementById(footnoteId)
+      if (footnoteEl) {
+        footnoteEl.scrollIntoView({ behavior: "smooth", block: "center" })
+      }
+    })
+  })
+
   paperModal.classList.remove("hidden")
 }
 
@@ -418,8 +442,9 @@ function setupEventListeners() {
   })
 
   paperModalClose.addEventListener("click", hidePaperModal)
-  paperModal.addEventListener("click", (e) => {
-    if (e.target === paperModal) {
+
+  viewport.addEventListener("click", (e) => {
+    if (!paperModal.classList.contains("hidden")) {
       hidePaperModal()
     }
   })

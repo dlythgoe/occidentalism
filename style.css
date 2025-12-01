@@ -286,13 +286,18 @@ body {
   min-height: 100%;
 }
 
+/* Made close button sticky when scrolling */
 #paper-modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: sticky;
+  top: 0;
+  float: right;
   font-size: 32px;
   color: #000000;
   cursor: pointer;
+  background: #ffffff;
+  padding: 10px 15px;
+  margin: -40px -40px 0 0;
+  z-index: 10;
 }
 
 #paper-modal-close:hover {
@@ -303,6 +308,7 @@ body {
   font-size: 24px;
   margin-bottom: 24px;
   line-height: 1.4;
+  padding-right: 60px;
 }
 
 /* Added styles for clickable images in papers */
@@ -361,6 +367,15 @@ body {
   color: #000000;
   cursor: pointer;
   text-decoration: none;
+}
+
+.footnote-ref a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.footnote-ref a:hover {
+  text-decoration: underline;
 }
 
 .footnote-ref:hover {
