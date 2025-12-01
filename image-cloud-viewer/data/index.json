@@ -1,0 +1,37 @@
+[
+  {
+    "filename": "1.jpg",
+    "title": "Flicker 01",
+    "description": "LED-solar study",
+    "tags": ["coca-cola", "sports-cars", "protest"],
+    "date": "2024-06-01"
+  },
+  {
+    "filename": "2.jpg",
+    "title": "Stankovice Reverie",
+    "description": "Site-specific composition",
+    "tags": ["nakedness", "sports-cars", "protest"],
+    "date": "2024-08-12"
+  },
+  {
+    "filename": "3.jpg",
+    "title": "Sample Image 01",
+    "description": "Example artwork for testing",
+    "tags": ["coca-cola", "nakedness", "protest"],
+    "date": "2024-03-15"
+  },
+  {
+    "filename": "4.jpg",
+    "title": "Sample Image 02",
+    "description": "Another test image",
+    "tags": ["sports-cars", "nakedness", "coca-cola"],
+    "date": "2024-05-20"
+  },
+  {
+    "filename": "5.jpg",
+    "title": "Sample Image 03",
+    "description": "Another test image",
+    "tags": ["protest", "coca-cola", "sports-cars"],
+    "date": "2024-05-20"
+  }
+]

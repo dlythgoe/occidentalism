@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cloud Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Filter controls -->
+    <div id="controls">
+        <!-- Added collapsible tags section -->
+        <div class="collapsible-section">
+            <button id="toggle-filters" class="section-toggle">Tags</button>
+            <div id="filter-container" class="section-content">
+                <div id="tag-filters"></div>
+                <button id="reset-filters">Clear filters</button>
+                <button id="reset-view">Reset view</button>
+            </div>
+        </div>
+
+        <!-- Added collapsible papers section -->
+        <div class="collapsible-section">
+            <button id="toggle-papers" class="section-toggle">Papers</button>
+            <div id="papers-container" class="section-content collapsed">
+                <div id="papers-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main viewport for the image board -->
+    <div id="viewport">
+        <div id="board"></div>
+    </div>
+
+    <!-- Tooltip for hover -->
+    <div id="tooltip" class="hidden"></div>
+
+    <!-- Modal for enlarged view -->
+    <div id="modal" class="hidden">
+        <div id="modal-content">
+            <span id="modal-close">&times;</span>
+            <img id="modal-image" src="/placeholder.svg" alt="">
+            <div id="modal-info">
+                <h2 id="modal-title"></h2>
+                <p id="modal-description"></p>
+                <div id="modal-tags"></div>
+                <p id="modal-date"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Added paper modal for left half overlay -->
+    <div id="paper-modal" class="hidden">
+        <div id="paper-modal-content">
+            <span id="paper-modal-close">&times;</span>
+            <h2 id="paper-title"></h2>
+            <div id="paper-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
