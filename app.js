@@ -1,5 +1,6 @@
 // State management
 let imageData = []
+let papersData = []
 const activeTags = new Set()
 const allTags = new Set()
 
@@ -14,7 +15,6 @@ let startY = 0
 const board = document.getElementById("board")
 const viewport = document.getElementById("viewport")
 const tagFiltersContainer = document.getElementById("tag-filters")
-const tooltip = document.getElementById("tooltip")
 const modal = document.getElementById("modal")
 const modalImage = document.getElementById("modal-image")
 const modalTitle = document.getElementById("modal-title")
@@ -34,109 +34,33 @@ const paperModalClose = document.getElementById("paper-modal-close")
 const paperTitle = document.getElementById("paper-title")
 const paperBody = document.getElementById("paper-body")
 
-// Papers data - can also be moved to a JSON file later
-const PAPERS_DATA = [
-  {
-    title: "The Semiotics of Consumer Culture: A Study of Coca-Cola Imagery",
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
-
-Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
-
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.`,
-  },
-  {
-    title: "Velocity and Identity: Sports Cars in Western Visual Culture",
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-
-Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-
-Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.
-
-Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
-
-Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.
-
-Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc. Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit.`,
-  },
-  {
-    title: "Bodies Exposed: Nakedness and Power in Contemporary Media",
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
-
-Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.
-
-Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.
-
-Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.
-
-Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam.`,
-  },
-  {
-    title: "Visual Resistance: The Aesthetics of Protest Photography",
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor.
-
-Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend.
-
-Ut nonummy. Fusce aliquet pede non pede. Suspendisse dapibus lorem pellentesque magna. Integer nulla. Donec blandit feugiat ligula.
-
-Donec hendrerit, felis et imperdiet euismod, purus ipsum pretium metus, in lacinia nulla nisl eget sapien. Donec ut est in lectus consequat consequat. Etiam eget dui. Aliquam erat volutpat.
-
-Sed at lorem in nunc porta tristique. Proin nec augue. Quisque aliquam tempor magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-Nunc ac magna. Maecenas odio dolor, vulputate vel, auctor ac, accumsan id, felis. Pellentesque cursus sagittis felis. Pellentesque porttitor, velit lacinia egestas auctor, diam eros tempus arcu.`,
-  },
-  {
-    title: "Brand Mythology: Coca-Cola and the American Dream",
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
-
-Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-
-Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
-
-Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
-
-Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
-
-In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris.`,
-  },
-  {
-    title: "Speed and Spectacle: The Cultural Politics of Automotive Design",
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui.
-
-Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia.
-
-Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris.
-
-Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus.
-
-Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede.
-
-Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque.`,
-  },
-  {
-    title: "Dissent and Documentation: A Visual History of Western Protest Movements",
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
-
-Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
-
-Fusce aliquet pede non pede. Suspendisse dapibus lorem pellentesque magna. Integer nulla. Donec blandit feugiat ligula. Donec hendrerit, felis et imperdiet euismod, purus ipsum pretium metus.
-
-In lacinia nulla nisl eget sapien. Donec ut est in lectus consequat consequat. Etiam eget dui. Aliquam erat volutpat. Sed at lorem in nunc porta tristique.
-
-Proin nec augue. Quisque aliquam tempor magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac magna.`,
-  },
-]
-
 const imageDimensions = new Map()
+
+function parseMarkdown(text) {
+  const html = text
+    // Headers
+    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+    // Bold
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    // Italic
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    // Images - convert to clickable images that open in modal
+    .replace(/!\[([^\]]*)\]$$([^)]+)$$/g, (match, alt, src) => {
+      // Check if it's a reference to an image in our images folder
+      const filename = src.replace(/^images\//, "")
+      return `<img src="images/${filename}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
+    })
+    // Links
+    .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank">$1</a>')
+    // Paragraphs (double newlines)
+    .replace(/\n\n/g, "</p><p>")
+    // Single newlines to <br>
+    .replace(/\n/g, "<br>")
+
+  return "<p>" + html + "</p>"
+}
 
 async function init() {
   try {
@@ -147,6 +71,16 @@ async function init() {
     }
     imageData = await response.json()
 
+    try {
+      const papersResponse = await fetch("data/papers.json")
+      if (papersResponse.ok) {
+        papersData = await papersResponse.json()
+      }
+    } catch (e) {
+      console.log("No papers.json found, papers list will be empty")
+      papersData = []
+    }
+
     // Extract all unique tags
     imageData.forEach((item) => {
       item.tags.forEach((tag) => allTags.add(tag))
@@ -156,6 +90,8 @@ async function init() {
     createTagFilters()
 
     await loadImageDimensions()
+
+    await loadPaperContents()
 
     // Position and render images
     renderImages()
@@ -191,6 +127,23 @@ async function loadImageDimensions() {
       }
       img.src = `images/${item.filename}`
     })
+  })
+
+  await Promise.all(promises)
+}
+
+async function loadPaperContents() {
+  const promises = papersData.map(async (paper) => {
+    try {
+      const response = await fetch(`papers/${paper.filename}`)
+      if (response.ok) {
+        paper.content = await response.text()
+      } else {
+        paper.content = "Paper content not found."
+      }
+    } catch (e) {
+      paper.content = "Error loading paper content."
+    }
   })
 
   await Promise.all(promises)
@@ -275,11 +228,6 @@ function renderImages() {
 
     imageItem.appendChild(img)
 
-    imageItem.addEventListener("mouseenter", (e) => {
-      showTooltip(e, item)
-    })
-    imageItem.addEventListener("mousemove", moveTooltip)
-
     imageItem.addEventListener("click", () => showModal(item))
 
     board.appendChild(imageItem)
@@ -288,27 +236,6 @@ function renderImages() {
     rowWidth += displayWidth + spacing
     rowHeight = Math.max(rowHeight, displayHeight)
   })
-}
-
-function showTooltip(e, item) {
-  tooltip.innerHTML = `
-        <h4>${item.title}</h4>
-        <p>${item.description}</p>
-        <div class="tooltip-tags">
-            ${item.tags.map((tag) => `<span class="tooltip-tag">${tag}</span>`).join("")}
-        </div>
-    `
-  tooltip.classList.remove("hidden")
-  moveTooltip(e)
-}
-
-function moveTooltip(e) {
-  tooltip.style.left = `${e.clientX + 15}px`
-  tooltip.style.top = `${e.clientY + 15}px`
-}
-
-function hideTooltip() {
-  tooltip.classList.add("hidden")
 }
 
 function showModal(item) {
@@ -322,16 +249,36 @@ function showModal(item) {
   modal.classList.remove("hidden")
 }
 
+function showModalByFilename(filename) {
+  const item = imageData.find((img) => img.filename === filename)
+  if (item) {
+    showModal(item)
+  } else {
+    // If image not in index, show basic modal
+    modalImage.src = `images/${filename}`
+    modalTitle.textContent = filename
+    modalDescription.textContent = ""
+    modalDate.textContent = ""
+    modalTags.innerHTML = ""
+    modal.classList.remove("hidden")
+  }
+}
+
 function hideModal() {
   modal.classList.add("hidden")
 }
 
 function showPaperModal(paper) {
   paperTitle.textContent = paper.title
-  paperBody.innerHTML = paper.body
-    .split("\n\n")
-    .map((p) => `<p>${p}</p>`)
-    .join("")
+  paperBody.innerHTML = parseMarkdown(paper.content || "")
+
+  const paperImages = paperBody.querySelectorAll(".paper-image")
+  paperImages.forEach((img) => {
+    img.addEventListener("click", () => {
+      showModalByFilename(img.dataset.filename)
+    })
+  })
+
   paperModal.classList.remove("hidden")
 }
 
@@ -390,7 +337,7 @@ function resetView() {
 function createPapersList() {
   papersList.innerHTML = ""
 
-  PAPERS_DATA.forEach((paper) => {
+  papersData.forEach((paper) => {
     const paperItem = document.createElement("button")
     paperItem.className = "paper-item"
     paperItem.textContent = paper.title
@@ -415,11 +362,6 @@ function setupEventListeners() {
   })
 
   document.addEventListener("mousemove", (e) => {
-    const isOverImage = e.target.closest(".image-item")
-    if (!isOverImage) {
-      hideTooltip()
-    }
-
     if (startX !== 0 || startY !== 0) {
       const deltaX = Math.abs(e.clientX - (startX + translateX))
       const deltaY = Math.abs(e.clientY - (startY + translateY))
