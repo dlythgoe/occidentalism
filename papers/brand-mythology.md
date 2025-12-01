@@ -29,7 +29,3 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum purus quam, 
 [^1]: Barthes, Roland. "Mythologies" (1957). Hill and Wang.
 [^2]: Holt, Douglas B. "How Brands Become Icons" (2004). Harvard Business Review Press.
 [^3]: Klein, Naomi. "No Logo" (1999). Picador.
-\`\`\`
-
-```md file="papers/velocity-identity.md" isDeleted="true"
-...deleted...
