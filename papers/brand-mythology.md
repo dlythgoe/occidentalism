@@ -12,11 +12,13 @@ Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec o
 
 Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.[^2]
 
+![Coke Branding Example](images/coke-2.jpg)
+
 Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
 
 ## Global Reach
 
-Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.[^3]
 
 In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris.
 
@@ -24,5 +26,10 @@ In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu to
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
 
-[^1]: See Roland Barthes, "Mythologies" (1957), for a foundational analysis of consumer culture semiotics.
-[^2]: The concept of brand mythology is explored in depth by various cultural theorists.
+[^1]: Barthes, Roland. "Mythologies" (1957). Hill and Wang.
+[^2]: Holt, Douglas B. "How Brands Become Icons" (2004). Harvard Business Review Press.
+[^3]: Klein, Naomi. "No Logo" (1999). Picador.
+\`\`\`
+
+```md file="papers/velocity-identity.md" isDeleted="true"
+...deleted...

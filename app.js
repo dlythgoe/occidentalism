@@ -53,10 +53,12 @@ function parseMarkdown(text) {
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     // Italic
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    // Footnote references
     .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref" data-footnote="$1">[$1]</sup>')
     .replace(/!\[([^\]]*)\]$$([^)]+)$$/g, (match, alt, src) => {
+      // src is already the full path like "images/coke-1.jpg"
       const filename = src.replace(/^images\//, "")
-      return `<img src="images/${filename}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
+      return `<img src="${src}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
     })
     // Links
     .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank">$1</a>')
