@@ -56,9 +56,10 @@ function parseMarkdown(text) {
     // Footnote references
     .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref" data-footnote="$1">[$1]</sup>')
     .replace(/!\[([^\]]*)\]$$([^)]+)$$/g, (match, alt, src) => {
-      // src is already the full path like "images/coke-1.jpg"
-      const filename = src.replace(/^images\//, "")
-      return `<img src="${src}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
+      // Normalize path: ../images/file.jpg -> images/file.jpg
+      const normalizedSrc = src.replace(/^\.\.\//, "")
+      const filename = normalizedSrc.replace(/^images\//, "")
+      return `<img src="${normalizedSrc}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
     })
     // Links
     .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank">$1</a>')

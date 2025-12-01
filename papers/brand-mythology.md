@@ -4,7 +4,8 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
 
-![Coca-Cola Advertisement](images/coke-1.jpg)
+<!-- Fixed image path to use ../ for correct relative path from papers folder -->
+![Coca-Cola Advertisement](../images/coke-1.jpg)
 
 Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.[^1]
 
@@ -12,7 +13,8 @@ Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec o
 
 Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.[^2]
 
-![Coke Branding Example](images/coke-2.jpg)
+<!-- Fixed image path -->
+![Coke Branding Example](../images/coke-2.jpg)
 
 Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
 
