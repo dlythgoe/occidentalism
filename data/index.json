@@ -1,72 +1,72 @@
 [
   {
-    filename: "coke-1.jpg",
-    title: "Coke",
-    description: "LED–solar study",
-    tags: ["coca-cola"],
-    date: "2024-06-01",
+    "filename": "coke-1.jpg",
+    "title": "Coke",
+    "description": "LED-solar study",
+    "tags": ["coca-cola"],
+    "date": "2024-06-01"
   },
   {
-    filename: "coke-2.jpg",
-    title: "Coke",
-    description: "LED–solar study",
-    tags: ["coca-cola"],
-    date: "2024-06-01",
+    "filename": "coke-2.jpg",
+    "title": "Coke",
+    "description": "LED-solar study",
+    "tags": ["coca-cola"],
+    "date": "2024-06-01"
   },
   {
-    filename: "coke-3.jpg",
-    title: "Joey 1",
-    description: "LED–solar study",
-    tags: ["coca-cola"],
-    date: "2024-06-01",
+    "filename": "coke-3.jpg",
+    "title": "Joey 1",
+    "description": "LED-solar study",
+    "tags": ["coca-cola"],
+    "date": "2024-06-01"
   },
   {
-    filename: "coke-4.jpg",
-    title: "Joey 2",
-    description: "LED–solar study",
-    tags: ["coca-cola"],
-    date: "2024-06-01",
+    "filename": "coke-4.jpg",
+    "title": "Joey 2",
+    "description": "LED-solar study",
+    "tags": ["coca-cola"],
+    "date": "2024-06-01"
   },
   {
-    filename: "naked-1.jpg",
-    title: "nakedness",
-    description: "Site-specific composition",
-    tags: ["nakedness"],
-    date: "2024-08-12",
+    "filename": "naked-1.jpg",
+    "title": "Nakedness",
+    "description": "Site-specific composition",
+    "tags": ["nakedness"],
+    "date": "2024-08-12"
   },
   {
-    filename: "naked-2.jpg",
-    title: "nackedness",
-    description: "Site-specific composition",
-    tags: ["nakedness"],
-    date: "2024-08-12",
+    "filename": "naked-2.jpg",
+    "title": "Nakedness",
+    "description": "Site-specific composition",
+    "tags": ["nakedness"],
+    "date": "2024-08-12"
   },
   {
-    filename: "naked-3.jpg",
-    title: "M.M.",
-    description: "Site-specific composition",
-    tags: ["nakedness"],
-    date: "2024-08-12",
+    "filename": "naked-3.jpg",
+    "title": "M.M.",
+    "description": "Site-specific composition",
+    "tags": ["nakedness"],
+    "date": "2024-08-12"
   },
   {
-    filename: "car-1.jpg",
-    title: "Sample Image 02",
-    description: "Another test image",
-    tags: ["sports-cars"],
-    date: "2024-05-20",
+    "filename": "car-1.jpg",
+    "title": "Sports Car 1",
+    "description": "Another test image",
+    "tags": ["sports-cars"],
+    "date": "2024-05-20"
   },
   {
-    filename: "car-2.jpg",
-    title: "Sample Image 02",
-    description: "Another test image",
-    tags: ["sports-cars"],
-    date: "2024-05-20",
+    "filename": "car-2.jpg",
+    "title": "Sports Car 2",
+    "description": "Another test image",
+    "tags": ["sports-cars"],
+    "date": "2024-05-20"
   },
   {
-    filename: "protest-1.jpg",
-    title: "Sample Image 02",
-    description: "Another test image",
-    tags: ["protest"],
-    date: "2024-05-20",
-  }  
+    "filename": "protest-1.jpg",
+    "title": "Protest",
+    "description": "Another test image",
+    "tags": ["protest"],
+    "date": "2024-05-20"
+  }
 ]
