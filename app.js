@@ -45,6 +45,35 @@ function parseMarkdown(text) {
     return ""
   })
 
+  // Manual image parsing - find ![alt](src) patterns without regex parentheses issues
+  let result = ""
+  let i = 0
+  while (i < processedText.length) {
+    // Look for image pattern: ![
+    if (processedText[i] === "!" && processedText[i + 1] === "[") {
+      const altStart = i + 2
+      const altEnd = processedText.indexOf("]", altStart)
+      if (altEnd !== -1 && processedText[altEnd + 1] === "(") {
+        const srcStart = altEnd + 2
+        const srcEnd = processedText.indexOf(")", srcStart)
+        if (srcEnd !== -1) {
+          const alt = processedText.substring(altStart, altEnd)
+          const src = processedText.substring(srcStart, srcEnd)
+          // Normalize path: ../images/file.jpg -> images/file.jpg
+          const normalizedSrc = src.replace(/^\.\.\//, "")
+          const filename = normalizedSrc.replace(/^images\//, "")
+          result +=
+            '<img src="' + normalizedSrc + '" alt="' + alt + '" class="paper-image" data-filename="' + filename + '" />'
+          i = srcEnd + 1
+          continue
+        }
+      }
+    }
+    result += processedText[i]
+    i++
+  }
+  processedText = result
+
   let html = processedText
     // Headers (H2 and H3 only, H1 removed above)
     .replace(/^### (.+)$/gm, "<h3>$1</h3>")
@@ -55,12 +84,7 @@ function parseMarkdown(text) {
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
     // Footnote references - now clickable with href
     .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref"><a href="#fn-$1" data-footnote="$1">[$1]</a></sup>')
-    .replace(/!\[([^\]]*)\]$$([^)]+)$$/g, (match, alt, src) => {
-      // Normalize path: ../images/file.jpg -> images/file.jpg
-      const normalizedSrc = src.replace(/^\.\.\//, "")
-      const filename = normalizedSrc.replace(/^images\//, "")
-      return `<img src="${normalizedSrc}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
-    })
+    // Regular links [text](url)
     .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank">$1</a>')
     // Paragraphs (double newlines)
     .replace(/\n\n/g, "</p><p>")
@@ -75,7 +99,7 @@ function parseMarkdown(text) {
     footnoteNums
       .sort((a, b) => Number(a) - Number(b))
       .forEach((num) => {
-        html += `<li id="fn-${num}">${footnotes[num]}</li>`
+        html += '<li id="fn-' + num + '">' + footnotes[num] + "</li>"
       })
     html += "</ol></div>"
   }
