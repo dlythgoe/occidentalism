@@ -403,27 +403,49 @@ body {
   line-height: 1.6;
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling - hide scrollbar by default, show only when scrolling */
+#paper-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#paper-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#paper-modal-content::-webkit-scrollbar-thumb {
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+#paper-modal-content.is-scrolling::-webkit-scrollbar-thumb {
+  background: #cccccc;
+}
+
+#paper-modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+#paper-modal-content.is-scrolling {
+  scrollbar-color: #cccccc transparent;
+}
+
 #controls::-webkit-scrollbar,
-.section-content::-webkit-scrollbar,
-#paper-modal::-webkit-scrollbar {
+.section-content::-webkit-scrollbar {
   width: 6px;
 }
 
 #controls::-webkit-scrollbar-track,
-.section-content::-webkit-scrollbar-track,
-#paper-modal::-webkit-scrollbar-track {
+.section-content::-webkit-scrollbar-track {
   background: #f0f0f0;
 }
 
 #controls::-webkit-scrollbar-thumb,
-.section-content::-webkit-scrollbar-thumb,
-#paper-modal::-webkit-scrollbar-thumb {
+.section-content::-webkit-scrollbar-thumb {
   background: #cccccc;
 }
 
 #controls::-webkit-scrollbar-thumb:hover,
-.section-content::-webkit-scrollbar-thumb:hover,
-#paper-modal::-webkit-scrollbar-thumb:hover {
+.section-content::-webkit-scrollbar-thumb:hover {
   background: #999999;
 }

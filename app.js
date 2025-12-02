@@ -33,6 +33,7 @@ const paperModal = document.getElementById("paper-modal")
 const paperModalClose = document.getElementById("paper-modal-close")
 const paperTitle = document.getElementById("paper-title")
 const paperBody = document.getElementById("paper-body")
+const paperModalContent = document.getElementById("paper-modal-content") // Added for scroll detection
 
 const imageDimensions = new Map()
 
@@ -303,6 +304,7 @@ function showModal(item) {
   modalTags.innerHTML = item.tags.map((tag) => `<span class="modal-tag">${tag}</span>`).join("")
 
   modal.classList.remove("hidden")
+  modal.style.zIndex = "3000" // Updated to ensure image modal is above paper modal
 }
 
 function showModalByFilename(filename) {
@@ -317,6 +319,7 @@ function showModalByFilename(filename) {
     modalDate.textContent = ""
     modalTags.innerHTML = ""
     modal.classList.remove("hidden")
+    modal.style.zIndex = "3000" // Updated to ensure image modal is above paper modal
   }
 }
 
@@ -516,6 +519,16 @@ function setupEventListeners() {
     const isExpanded = papersContainer.style.display !== "none"
     papersContainer.style.display = isExpanded ? "none" : "block"
     togglePapersBtn.textContent = isExpanded ? "Papers [+]" : "Papers [-]"
+  })
+
+  // Added scroll detection for paper modal content to show/hide scrollbar
+  let scrollTimeout
+  paperModalContent.addEventListener("scroll", () => {
+    paperModalContent.classList.add("is-scrolling")
+    clearTimeout(scrollTimeout)
+    scrollTimeout = setTimeout(() => {
+      paperModalContent.classList.remove("is-scrolling")
+    }, 1000)
   })
 }
 

@@ -2,71 +2,71 @@
   {
     "filename": "coke-1.jpg",
     "title": "Coke",
-    "description": "LED-solar study",
-    "tags": ["coca-cola"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["coca-cola", "advertising"],
     "date": "2024-06-01"
   },
   {
     "filename": "coke-2.jpg",
     "title": "Coke",
-    "description": "LED-solar study",
-    "tags": ["coca-cola"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["coca-cola", "consumerism"],
     "date": "2024-06-01"
   },
   {
     "filename": "coke-3.jpg",
     "title": "Joey 1",
-    "description": "LED-solar study",
-    "tags": ["coca-cola"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["coca-cola", "celebrity"],
     "date": "2024-06-01"
   },
   {
     "filename": "coke-4.jpg",
     "title": "Joey 2",
-    "description": "LED-solar study",
-    "tags": ["coca-cola"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["coca-cola", "celebrity"],
     "date": "2024-06-01"
   },
   {
     "filename": "naked-1.jpg",
     "title": "Nakedness",
-    "description": "Site-specific composition",
-    "tags": ["nakedness"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["nakedness", "body"],
     "date": "2024-08-12"
   },
   {
     "filename": "naked-2.jpg",
     "title": "Nakedness",
-    "description": "Site-specific composition",
-    "tags": ["nakedness"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["nakedness", "vulnerability"],
     "date": "2024-08-12"
   },
   {
     "filename": "naked-3.jpg",
     "title": "M.M.",
-    "description": "Site-specific composition",
-    "tags": ["nakedness"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["nakedness", "celebrity"],
     "date": "2024-08-12"
   },
   {
     "filename": "car-1.jpg",
     "title": "Sports Car 1",
-    "description": "Another test image",
-    "tags": ["sports-cars"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["sports-cars", "speed"],
     "date": "2024-05-20"
   },
   {
     "filename": "car-2.jpg",
     "title": "Sports Car 2",
-    "description": "Another test image",
-    "tags": ["sports-cars"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["sports-cars", "luxury"],
     "date": "2024-05-20"
   },
   {
     "filename": "protest-1.jpg",
     "title": "Protest",
-    "description": "Another test image",
-    "tags": ["protest"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "tags": ["protest", "activism"],
     "date": "2024-05-20"
   }
 ]
