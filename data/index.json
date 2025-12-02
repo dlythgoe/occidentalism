@@ -4,69 +4,69 @@
     "title": "Coke",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["coca-cola", "advertising"],
-    "date": "2024-06-01"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "coke-2.jpg",
     "title": "Coke",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["coca-cola", "consumerism"],
-    "date": "2024-06-01"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "coke-3.jpg",
     "title": "Joey 1",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["coca-cola", "celebrity"],
-    "date": "2024-06-01"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "coke-4.jpg",
     "title": "Joey 2",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["coca-cola", "celebrity"],
-    "date": "2024-06-01"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "naked-1.jpg",
     "title": "Nakedness",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["nakedness", "body"],
-    "date": "2024-08-12"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "naked-2.jpg",
     "title": "Nakedness",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["nakedness", "vulnerability"],
-    "date": "2024-08-12"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "naked-3.jpg",
     "title": "M.M.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["nakedness", "celebrity"],
-    "date": "2024-08-12"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "car-1.jpg",
     "title": "Sports Car 1",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["sports-cars", "speed"],
-    "date": "2024-05-20"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "car-2.jpg",
     "title": "Sports Car 2",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["sports-cars", "luxury"],
-    "date": "2024-05-20"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   },
   {
     "filename": "protest-1.jpg",
     "title": "Protest",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["protest", "activism"],
-    "date": "2024-05-20"
+    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
   }
 ]
