@@ -55,14 +55,12 @@ function parseMarkdown(text) {
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
     // Footnote references - now clickable with href
     .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref"><a href="#fn-$1" data-footnote="$1">[$1]</a></sup>')
-    // Images - FIXED regex with proper escaped parentheses
     .replace(/!\[([^\]]*)\]$$([^)]+)$$/g, (match, alt, src) => {
       // Normalize path: ../images/file.jpg -> images/file.jpg
       const normalizedSrc = src.replace(/^\.\.\//, "")
       const filename = normalizedSrc.replace(/^images\//, "")
       return `<img src="${normalizedSrc}" alt="${alt}" class="paper-image" data-filename="${filename}" />`
     })
-    // Links - FIXED regex with proper escaped parentheses
     .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank">$1</a>')
     // Paragraphs (double newlines)
     .replace(/\n\n/g, "</p><p>")
@@ -400,11 +398,12 @@ function setupEventListeners() {
   let panStarted = false
 
   viewport.addEventListener("mousedown", (e) => {
-    if (e.target === viewport || e.target === board || e.target.classList.contains("image-item")) {
-      startX = e.clientX - translateX
-      startY = e.clientY - translateY
-      panStarted = false
+    // Don't start pan if clicking on controls or modals
+    if (e.target.closest("#controls") || e.target.closest("#modal") || e.target.closest("#paper-modal")) {
+      return
     }
+    startX = e.clientX - translateX
+    startY = e.clientY - translateY
   })
 
   document.addEventListener("mousemove", (e) => {
@@ -426,13 +425,29 @@ function setupEventListeners() {
     }
   })
 
-  document.addEventListener("mouseup", () => {
+  document.addEventListener("mouseup", (e) => {
+    const wasPanning = panStarted
     isPanning = false
     panStarted = false
     startX = 0
     startY = 0
     viewport.classList.remove("grabbing")
   })
+
+  viewport.addEventListener(
+    "wheel",
+    (e) => {
+      // Don't scroll if over controls or modals
+      if (e.target.closest("#controls") || e.target.closest("#paper-modal")) {
+        return
+      }
+      e.preventDefault()
+      translateX -= e.deltaX
+      translateY -= e.deltaY
+      updateTransform()
+    },
+    { passive: false },
+  )
 
   modalClose.addEventListener("click", hideModal)
   modal.addEventListener("click", (e) => {

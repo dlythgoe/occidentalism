@@ -33,8 +33,6 @@
         <div id="board"></div>
     </div>
 
-    <!-- Removed tooltip element entirely -->
-
     <!-- Modal for enlarged view -->
     <div id="modal" class="hidden">
         <div id="modal-content">
@@ -49,11 +47,13 @@
         </div>
     </div>
 
-    <!-- Added paper modal for left half overlay -->
+    <!-- Updated paper modal structure with sticky header -->
     <div id="paper-modal" class="hidden">
-        <div id="paper-modal-content">
-            <span id="paper-modal-close">&times;</span>
+        <div id="paper-modal-header">
             <h2 id="paper-title"></h2>
+            <span id="paper-modal-close">&times;</span>
+        </div>
+        <div id="paper-modal-content">
             <div id="paper-body"></div>
         </div>
     </div>
