@@ -11,6 +11,11 @@ let isPanning = false
 let startX = 0
 let startY = 0
 
+let imagePositions = [] // Stores calculated positions for all images
+let gridWidth = 0
+let gridHeight = 0
+const BUFFER = 200 // Extra pixels to render outside viewport
+
 // DOM elements
 const board = document.getElementById("board")
 const viewport = document.getElementById("viewport")
@@ -33,7 +38,7 @@ const paperModal = document.getElementById("paper-modal")
 const paperModalClose = document.getElementById("paper-modal-close")
 const paperTitle = document.getElementById("paper-title")
 const paperBody = document.getElementById("paper-body")
-const paperModalContent = document.getElementById("paper-modal-content") // Added for scroll detection
+const paperModalContent = document.getElementById("paper-modal-content")
 
 const imageDimensions = new Map()
 
@@ -150,11 +155,12 @@ async function init() {
 
     await loadPaperContents()
 
-    // Position and render images
-    renderImages()
+    calculateImagePositions()
 
     // Center the view
     centerView()
+
+    renderVisibleImages()
 
     createPapersList()
 
@@ -232,9 +238,7 @@ function createTagFilters() {
   })
 }
 
-function renderImages() {
-  board.innerHTML = ""
-
+function calculateImagePositions() {
   const filteredData =
     activeTags.size === 0 ? imageData : imageData.filter((item) => item.tags.some((tag) => activeTags.has(tag)))
 
@@ -246,7 +250,11 @@ function renderImages() {
   let rowWidth = 0
   const maxRowWidth = 1200
 
-  filteredData.forEach((item, index) => {
+  imagePositions = []
+  let maxX = 0
+  let maxY = 0
+
+  filteredData.forEach((item) => {
     const dims = imageDimensions.get(item.filename)
     if (!dims) return
 
@@ -261,38 +269,115 @@ function renderImages() {
       rowWidth = 0
     }
 
-    const imageItem = document.createElement("div")
-    imageItem.className = "image-item"
-    imageItem.style.left = `${currentX}px`
-    imageItem.style.top = `${currentY}px`
-    imageItem.dataset.tags = JSON.stringify(item.tags)
-    imageItem.dataset.filename = item.filename
+    imagePositions.push({
+      item,
+      x: currentX,
+      y: currentY,
+      width: displayWidth,
+      height: displayHeight,
+    })
 
-    const img = document.createElement("img")
-    img.src = `images/${item.filename}`
-    img.alt = item.title
-    img.loading = "lazy"
-    img.style.width = `${displayWidth}px`
-    img.style.height = `${displayHeight}px`
-
-    img.onerror = function () {
-      this.style.display = "none"
-      const errorMsg = document.createElement("div")
-      errorMsg.style.cssText = "color: #ff0000; font-size: 12px; padding: 10px; text-align: center;"
-      errorMsg.textContent = `Image not found: ${item.filename}`
-      imageItem.appendChild(errorMsg)
-    }
-
-    imageItem.appendChild(img)
-
-    imageItem.addEventListener("click", () => showModal(item))
-
-    board.appendChild(imageItem)
+    maxX = Math.max(maxX, currentX + displayWidth)
+    maxY = Math.max(maxY, currentY + displayHeight)
 
     currentX += displayWidth + spacing
     rowWidth += displayWidth + spacing
     rowHeight = Math.max(rowHeight, displayHeight)
   })
+
+  // Add padding to grid size
+  gridWidth = maxX + 100
+  gridHeight = maxY + 100
+}
+
+function mod(n, m) {
+  return ((n % m) + m) % m
+}
+
+function renderVisibleImages() {
+  board.innerHTML = ""
+
+  if (imagePositions.length === 0 || gridWidth === 0 || gridHeight === 0) return
+
+  const viewportWidth = viewport.clientWidth
+  const viewportHeight = viewport.clientHeight
+
+  // Calculate wrapped offset
+  const wrappedX = mod(-translateX, gridWidth)
+  const wrappedY = mod(-translateY, gridHeight)
+
+  // Viewport bounds in grid coordinates
+  const viewLeft = wrappedX - BUFFER
+  const viewRight = wrappedX + viewportWidth + BUFFER
+  const viewTop = wrappedY - BUFFER
+  const viewBottom = wrappedY + viewportHeight + BUFFER
+
+  // Track rendered images to avoid duplicates
+  const rendered = new Set()
+
+  // Check each image position
+  imagePositions.forEach((pos, index) => {
+    // Check main position and wrapped positions
+    const offsetsX = [0, -gridWidth, gridWidth]
+    const offsetsY = [0, -gridHeight, gridHeight]
+
+    for (const ox of offsetsX) {
+      for (const oy of offsetsY) {
+        const checkX = pos.x + ox
+        const checkY = pos.y + oy
+
+        // Check if this instance is visible
+        const isVisible =
+          checkX + pos.width > viewLeft && checkX < viewRight && checkY + pos.height > viewTop && checkY < viewBottom
+
+        if (isVisible) {
+          const key = `${index}-${ox}-${oy}`
+          if (rendered.has(key)) continue
+          rendered.add(key)
+
+          // Calculate screen position
+          const screenX = checkX - wrappedX + translateX + wrappedX
+          const screenY = checkY - wrappedY + translateY + wrappedY
+
+          createImageElement(pos.item, screenX, screenY, pos.width, pos.height)
+        }
+      }
+    }
+  })
+}
+
+function createImageElement(item, x, y, width, height) {
+  const imageItem = document.createElement("div")
+  imageItem.className = "image-item"
+  imageItem.style.left = `${x}px`
+  imageItem.style.top = `${y}px`
+  imageItem.dataset.tags = JSON.stringify(item.tags)
+  imageItem.dataset.filename = item.filename
+
+  const img = document.createElement("img")
+  img.src = `images/${item.filename}`
+  img.alt = item.title
+  img.loading = "lazy"
+  img.style.width = `${width}px`
+  img.style.height = `${height}px`
+
+  img.onerror = function () {
+    this.style.display = "none"
+    const errorMsg = document.createElement("div")
+    errorMsg.style.cssText = "color: #ff0000; font-size: 12px; padding: 10px; text-align: center;"
+    errorMsg.textContent = `Image not found: ${item.filename}`
+    imageItem.appendChild(errorMsg)
+  }
+
+  imageItem.appendChild(img)
+  imageItem.addEventListener("click", () => showModal(item))
+  board.appendChild(imageItem)
+}
+
+function renderImages() {
+  calculateImagePositions()
+  centerView()
+  renderVisibleImages()
 }
 
 function showModal(item) {
@@ -304,7 +389,7 @@ function showModal(item) {
   modalTags.innerHTML = item.tags.map((tag) => `<span class="modal-tag">${tag}</span>`).join("")
 
   modal.classList.remove("hidden")
-  modal.style.zIndex = "3000" // Updated to ensure image modal is above paper modal
+  modal.style.zIndex = "3000"
 }
 
 function showModalByFilename(filename) {
@@ -312,14 +397,13 @@ function showModalByFilename(filename) {
   if (item) {
     showModal(item)
   } else {
-    // If image not in index, show basic modal
     modalImage.src = `images/${filename}`
     modalTitle.textContent = filename
     modalDescription.textContent = ""
     modalDate.textContent = ""
     modalTags.innerHTML = ""
     modal.classList.remove("hidden")
-    modal.style.zIndex = "3000" // Updated to ensure image modal is above paper modal
+    modal.style.zIndex = "3000"
   }
 }
 
@@ -359,12 +443,11 @@ function hidePaperModal() {
 
 function updateTransform() {
   board.style.transform = `translate(${translateX}px, ${translateY}px)`
+  renderVisibleImages()
 }
 
 function centerView() {
-  const imageItems = document.querySelectorAll(".image-item")
-
-  if (imageItems.length === 0) {
+  if (imagePositions.length === 0) {
     translateX = 0
     translateY = 0
     updateTransform()
@@ -376,17 +459,11 @@ function centerView() {
   let maxX = Number.NEGATIVE_INFINITY
   let maxY = Number.NEGATIVE_INFINITY
 
-  imageItems.forEach((item) => {
-    const x = Number.parseInt(item.style.left)
-    const y = Number.parseInt(item.style.top)
-    const img = item.querySelector("img")
-    const width = img ? img.offsetWidth : 200
-    const height = img ? img.offsetHeight : 200
-
-    minX = Math.min(minX, x)
-    minY = Math.min(minY, y)
-    maxX = Math.max(maxX, x + width)
-    maxY = Math.max(maxY, y + height)
+  imagePositions.forEach((pos) => {
+    minX = Math.min(minX, pos.x)
+    minY = Math.min(minY, pos.y)
+    maxX = Math.max(maxX, pos.x + pos.width)
+    maxY = Math.max(maxY, pos.y + pos.height)
   })
 
   const centerX = (minX + maxX) / 2
@@ -398,11 +475,12 @@ function centerView() {
   translateX = viewportCenterX - centerX
   translateY = viewportCenterY - centerY
 
-  updateTransform()
+  board.style.transform = `translate(${translateX}px, ${translateY}px)`
 }
 
 function resetView() {
   centerView()
+  renderVisibleImages()
 }
 
 function createPapersList() {
@@ -425,7 +503,6 @@ function setupEventListeners() {
   let panStarted = false
 
   viewport.addEventListener("mousedown", (e) => {
-    // Don't start pan if clicking on controls or modals
     if (e.target.closest("#controls") || e.target.closest("#modal") || e.target.closest("#paper-modal")) {
       return
     }
@@ -464,7 +541,6 @@ function setupEventListeners() {
   viewport.addEventListener(
     "wheel",
     (e) => {
-      // Don't scroll if over controls or modals
       if (e.target.closest("#controls") || e.target.closest("#paper-modal")) {
         return
       }
@@ -475,6 +551,10 @@ function setupEventListeners() {
     },
     { passive: false },
   )
+
+  window.addEventListener("resize", () => {
+    renderVisibleImages()
+  })
 
   modalClose.addEventListener("click", hideModal)
   modal.addEventListener("click", (e) => {
@@ -504,7 +584,6 @@ function setupEventListeners() {
       btn.classList.remove("active")
     })
     renderImages()
-    centerView()
   })
 
   resetViewBtn.addEventListener("click", resetView)
@@ -521,7 +600,6 @@ function setupEventListeners() {
     togglePapersBtn.textContent = isExpanded ? "Papers [+]" : "Papers [-]"
   })
 
-  // Added scroll detection for paper modal content to show/hide scrollbar
   let scrollTimeout
   paperModalContent.addEventListener("scroll", () => {
     paperModalContent.classList.add("is-scrolling")
