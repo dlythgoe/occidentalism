@@ -11,9 +11,6 @@ let isPanning = false
 let startX = 0
 let startY = 0
 
-let gridWidth = 0
-let gridHeight = 0
-
 // DOM elements
 const board = document.getElementById("board")
 const viewport = document.getElementById("viewport")
@@ -36,7 +33,7 @@ const paperModal = document.getElementById("paper-modal")
 const paperModalClose = document.getElementById("paper-modal-close")
 const paperTitle = document.getElementById("paper-title")
 const paperBody = document.getElementById("paper-body")
-const paperModalContent = document.getElementById("paper-modal-content")
+const paperModalContent = document.getElementById("paper-modal-content") // Added for scroll detection
 
 const imageDimensions = new Map()
 
@@ -153,7 +150,11 @@ async function init() {
 
     await loadPaperContents()
 
+    // Position and render images
     renderImages()
+
+    // Center the view
+    centerView()
 
     createPapersList()
 
@@ -224,6 +225,7 @@ function createTagFilters() {
       }
 
       renderImages()
+      centerView()
     })
 
     tagFiltersContainer.appendChild(button)
@@ -244,10 +246,7 @@ function renderImages() {
   let rowWidth = 0
   const maxRowWidth = 1200
 
-  let maxX = 0
-  let maxY = 0
-
-  filteredData.forEach((item) => {
+  filteredData.forEach((item, index) => {
     const dims = imageDimensions.get(item.filename)
     if (!dims) return
 
@@ -285,66 +284,90 @@ function renderImages() {
     }
 
     imageItem.appendChild(img)
-    imageItem.addEventListener("click", () => showModal(item))
-    board.appendChild(imageItem)
 
-    maxX = Math.max(maxX, currentX + displayWidth)
-    maxY = Math.max(maxY, currentY + displayHeight)
+    imageItem.addEventListener("click", () => showModal(item))
+
+    board.appendChild(imageItem)
 
     currentX += displayWidth + spacing
     rowWidth += displayWidth + spacing
     rowHeight = Math.max(rowHeight, displayHeight)
   })
-
-  // Store grid bounds for wrapping
-  gridWidth = maxX + 100
-  gridHeight = maxY + 100
-
-  centerView()
 }
 
-function mod(n, m) {
-  return ((n % m) + m) % m
+function showModal(item) {
+  modalImage.src = `images/${item.filename}`
+  modalTitle.textContent = item.title
+  modalDescription.textContent = item.description
+  modalDate.textContent = `Date: ${item.date}`
+
+  modalTags.innerHTML = item.tags.map((tag) => `<span class="modal-tag">${tag}</span>`).join("")
+
+  modal.classList.remove("hidden")
+  modal.style.zIndex = "3000" // Updated to ensure image modal is above paper modal
 }
 
-function wrapTranslate() {
-  if (gridWidth > 0 && gridHeight > 0) {
-    // Only wrap if we've scrolled more than one full grid width/height
-    const viewportWidth = viewport.clientWidth
-    const viewportHeight = viewport.clientHeight
-
-    // Calculate bounds - allow scrolling within the grid plus viewport size
-    const minX = -(gridWidth - viewportWidth / 2)
-    const maxX = viewportWidth / 2
-    const minY = -(gridHeight - viewportHeight / 2)
-    const maxY = viewportHeight / 2
-
-    // Wrap around
-    if (translateX < minX) {
-      translateX += gridWidth
-    } else if (translateX > maxX) {
-      translateX -= gridWidth
-    }
-
-    if (translateY < minY) {
-      translateY += gridHeight
-    } else if (translateY > maxY) {
-      translateY -= gridHeight
-    }
+function showModalByFilename(filename) {
+  const item = imageData.find((img) => img.filename === filename)
+  if (item) {
+    showModal(item)
+  } else {
+    // If image not in index, show basic modal
+    modalImage.src = `images/${filename}`
+    modalTitle.textContent = filename
+    modalDescription.textContent = ""
+    modalDate.textContent = ""
+    modalTags.innerHTML = ""
+    modal.classList.remove("hidden")
+    modal.style.zIndex = "3000" // Updated to ensure image modal is above paper modal
   }
 }
 
+function hideModal() {
+  modal.classList.add("hidden")
+}
+
+function showPaperModal(paper) {
+  paperTitle.textContent = paper.title
+  paperBody.innerHTML = parseMarkdown(paper.content || "")
+
+  const paperImages = paperBody.querySelectorAll(".paper-image")
+  paperImages.forEach((img) => {
+    img.addEventListener("click", () => {
+      showModalByFilename(img.dataset.filename)
+    })
+  })
+
+  const footnoteRefs = paperBody.querySelectorAll(".footnote-ref a")
+  footnoteRefs.forEach((ref) => {
+    ref.addEventListener("click", (e) => {
+      e.preventDefault()
+      const footnoteId = ref.getAttribute("href").substring(1)
+      const footnoteEl = document.getElementById(footnoteId)
+      if (footnoteEl) {
+        footnoteEl.scrollIntoView({ behavior: "smooth", block: "center" })
+      }
+    })
+  })
+
+  paperModal.classList.remove("hidden")
+}
+
+function hidePaperModal() {
+  paperModal.classList.add("hidden")
+}
+
 function updateTransform() {
-  wrapTranslate()
   board.style.transform = `translate(${translateX}px, ${translateY}px)`
 }
 
 function centerView() {
-  const images = board.querySelectorAll(".image-item")
-  if (images.length === 0) {
+  const imageItems = document.querySelectorAll(".image-item")
+
+  if (imageItems.length === 0) {
     translateX = 0
     translateY = 0
-    board.style.transform = `translate(${translateX}px, ${translateY}px)`
+    updateTransform()
     return
   }
 
@@ -353,11 +376,12 @@ function centerView() {
   let maxX = Number.NEGATIVE_INFINITY
   let maxY = Number.NEGATIVE_INFINITY
 
-  images.forEach((img) => {
-    const x = Number.parseInt(img.style.left)
-    const y = Number.parseInt(img.style.top)
-    const width = img.offsetWidth
-    const height = img.offsetHeight
+  imageItems.forEach((item) => {
+    const x = Number.parseInt(item.style.left)
+    const y = Number.parseInt(item.style.top)
+    const img = item.querySelector("img")
+    const width = img ? img.offsetWidth : 200
+    const height = img ? img.offsetHeight : 200
 
     minX = Math.min(minX, x)
     minY = Math.min(minY, y)
@@ -374,7 +398,7 @@ function centerView() {
   translateX = viewportCenterX - centerX
   translateY = viewportCenterY - centerY
 
-  board.style.transform = `translate(${translateX}px, ${translateY}px)`
+  updateTransform()
 }
 
 function resetView() {
@@ -401,6 +425,7 @@ function setupEventListeners() {
   let panStarted = false
 
   viewport.addEventListener("mousedown", (e) => {
+    // Don't start pan if clicking on controls or modals
     if (e.target.closest("#controls") || e.target.closest("#modal") || e.target.closest("#paper-modal")) {
       return
     }
@@ -439,6 +464,7 @@ function setupEventListeners() {
   viewport.addEventListener(
     "wheel",
     (e) => {
+      // Don't scroll if over controls or modals
       if (e.target.closest("#controls") || e.target.closest("#paper-modal")) {
         return
       }
@@ -449,10 +475,6 @@ function setupEventListeners() {
     },
     { passive: false },
   )
-
-  window.addEventListener("resize", () => {
-    renderImages()
-  })
 
   modalClose.addEventListener("click", hideModal)
   modal.addEventListener("click", (e) => {
@@ -482,6 +504,7 @@ function setupEventListeners() {
       btn.classList.remove("active")
     })
     renderImages()
+    centerView()
   })
 
   resetViewBtn.addEventListener("click", resetView)
@@ -498,6 +521,7 @@ function setupEventListeners() {
     togglePapersBtn.textContent = isExpanded ? "Papers [+]" : "Papers [-]"
   })
 
+  // Added scroll detection for paper modal content to show/hide scrollbar
   let scrollTimeout
   paperModalContent.addEventListener("scroll", () => {
     paperModalContent.classList.add("is-scrolling")
@@ -506,67 +530,6 @@ function setupEventListeners() {
       paperModalContent.classList.remove("is-scrolling")
     }, 1000)
   })
-}
-
-function showModal(item) {
-  modalImage.src = `images/${item.filename}`
-  modalTitle.textContent = item.title
-  modalDescription.textContent = item.description
-  modalDate.textContent = `Date: ${item.date}`
-
-  modalTags.innerHTML = item.tags.map((tag) => `<span class="modal-tag">${tag}</span>`).join("")
-
-  modal.classList.remove("hidden")
-  modal.style.zIndex = "3000"
-}
-
-function showModalByFilename(filename) {
-  const item = imageData.find((img) => img.filename === filename)
-  if (item) {
-    showModal(item)
-  } else {
-    modalImage.src = `images/${filename}`
-    modalTitle.textContent = filename
-    modalDescription.textContent = ""
-    modalDate.textContent = ""
-    modalTags.innerHTML = ""
-    modal.classList.remove("hidden")
-    modal.style.zIndex = "3000"
-  }
-}
-
-function hideModal() {
-  modal.classList.add("hidden")
-}
-
-function showPaperModal(paper) {
-  paperTitle.textContent = paper.title
-  paperBody.innerHTML = parseMarkdown(paper.content || "")
-
-  const paperImages = paperBody.querySelectorAll(".paper-image")
-  paperImages.forEach((img) => {
-    img.addEventListener("click", () => {
-      showModalByFilename(img.dataset.filename)
-    })
-  })
-
-  const footnoteRefs = paperBody.querySelectorAll(".footnote-ref a")
-  footnoteRefs.forEach((ref) => {
-    ref.addEventListener("click", (e) => {
-      e.preventDefault()
-      const footnoteId = ref.getAttribute("href").substring(1)
-      const footnoteEl = document.getElementById(footnoteId)
-      if (footnoteEl) {
-        footnoteEl.scrollIntoView({ behavior: "smooth", block: "center" })
-      }
-    })
-  })
-
-  paperModal.classList.remove("hidden")
-}
-
-function hidePaperModal() {
-  paperModal.classList.add("hidden")
 }
 
 if (document.readyState === "loading") {
