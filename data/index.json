@@ -68,5 +68,26 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     "tags": ["protest", "activism"],
     "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
-  }
+  },
+  {
+    "filename": "Guido_e_Teodaldo.jpg",
+    "title": "Protest",
+    "description": "Guido of Arezzo (left) showing Bishop Theodaldus of Arezzo a monochord, depicted in an 11th-century medieval manuscript",
+    "tags": ["music", "notation", "renaissance"],
+    "date": "1180-1199"
+  },
+  {
+    "filename": "Ut_Queant_Laxis.jpg",
+    "title": "The Ut Queant Laxis",
+    "description": "The hymn, composed by Guido de Arezzo, from which he developed the ut–re–mi–fa–sol–la (do–re–mi–fa–so–la) mnemonic, which would later form the basis of solfège.",
+    "tags": ["music", "notation", "renaissance"],
+    "date": "Ca. 991-1033"
+  },
+  {
+    "filename": "eb_1952.jpg",
+    "title": "December 1952",
+    "description": "December 1952 is perhaps Earl Brown's most famous score. It is part of a larger set of unusually notated music called FOLIO.",
+    "tags": ["music", "notation", "abstraction"],
+    "date": "1952/1953"
+  }  
 ]
