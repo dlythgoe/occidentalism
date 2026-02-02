@@ -89,5 +89,12 @@
     "description": "December 1952 is perhaps Earl Brown's most famous score. It is part of a larger set of unusually notated music called FOLIO.",
     "tags": ["music", "notation", "abstraction"],
     "date": "1952/1953"
+  },  
+  {
+    "filename": "cage_fontana_1958.jpg",
+    "title": "Fontana Mix - Cage, John",
+    "description": "«Fontana Mix» consists of a total of 20 pages of graphic materials: ten pages covered with six curved lines each, and ten sheets of transparent film covered with randomly-placed points. In accordance with a specific system, and using the intersecting points of a raster screen, two of the pages produce connecting lines and measurements that can be freely assigned to musical occurrences such as volume, tone color, and pitch. The interpreter no longer finds a score in the customary sense, but rather a treatment manual for the notation of a composition. -Martina Sauerwald",
+    "tags": ["music", "notation", "aleatoric"],
+    "date": "1958"
   }  
 ]
