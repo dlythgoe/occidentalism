@@ -1,4 +1,4 @@
-# Between Description and Instruction - The Performer as Subject in Electronic Music
+# After Description and Instruction - The Notion of Indeterminacy in Notation
 
 ## Introduction
 
@@ -6,7 +6,7 @@ This essay tracks the shift in the historical development of notation from a pri
 
 If the score represents as an algorithm between the instrument in the body of the performer (Weibel, 2008)[^1], what then does this embrace of indeterminism tell us about the evolution of this algorithm? Can we see a parallel development from descriptive to instructive notation in the digital realm?
 
-This leads directly to the question of the subject — who is reading/interpreting in computer music? Where are the boundaries between instrument and autonomous system?
+This leads directly to the question of the subject — who is reading/interpreting in computer music? Where are the boundaries between instrument and autonomous system? 
 
 
 ## Historical Context
