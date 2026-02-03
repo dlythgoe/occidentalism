@@ -1,4 +1,4 @@
-# After Description and Instruction - The Notion of Indeterminacy in Notation
+# After Description and Instruction - Indeterminacy in Notation
 
 ## Introduction
 
