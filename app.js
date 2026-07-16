@@ -437,6 +437,19 @@ function showPaperModal(paper) {
     img.addEventListener("click", () => {
       showModalByFilename(img.dataset.filename)
     })
+
+    // italic-only paragraph directly after an image = caption
+    const imgP = img.closest("p")
+    const next = imgP && imgP.nextElementSibling
+    if (
+      next &&
+      next.tagName === "P" &&
+      next.firstElementChild &&
+      next.firstElementChild.tagName === "EM" &&
+      next.firstElementChild.textContent.trim() === next.textContent.trim()
+    ) {
+      next.classList.add("paper-caption")
+    }
   })
 
   const footnoteRefs = paperBody.querySelectorAll(".footnote-ref a")
@@ -770,8 +783,21 @@ function setupEventListeners() {
 
   // Added scroll detection for paper modal content to show/hide scrollbar
   let scrollTimeout
+  let lastScrollTop = 0
   paperModalContent.addEventListener("scroll", () => {
     paperModalContent.classList.add("is-scrolling")
+    // fade only in the direction of travel
+    const top = paperModalContent.scrollTop
+    if (top !== lastScrollTop) {
+      paperModalContent.classList.toggle("scrolling-down", top > lastScrollTop)
+      paperModalContent.classList.toggle("scrolling-up", top < lastScrollTop)
+      lastScrollTop = top
+    }
+    // suppress the fade at the hard ends of the scroll range
+    const atTop = top <= 0
+    const atBottom = top + paperModalContent.clientHeight >= paperModalContent.scrollHeight - 1
+    paperModalContent.classList.toggle("at-top", atTop)
+    paperModalContent.classList.toggle("at-bottom", atBottom)
     clearTimeout(scrollTimeout)
     scrollTimeout = setTimeout(() => {
       paperModalContent.classList.remove("is-scrolling")

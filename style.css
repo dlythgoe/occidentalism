@@ -330,6 +330,7 @@ body {
   z-index: 2000;
   border: 1px solid #000000;
   overflow: hidden;
+  padding: 30px 4px 30px 12px; /* white frame so scrolling text doesn't clip at the border */
 }
 
 #paper-modal.hidden {
@@ -359,6 +360,35 @@ body {
   background: #ffffff;
   overflow-y: auto;
   height: 100%;
+}
+
+/* Soft fade at the scroll edges — visible only while scrolling, eases back to solid at rest */
+.scroll-fade {
+  position: absolute;
+  left: 12px;
+  right: 4px;
+  height: 28px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s ease; /* slow fade back to solid at rest */
+  z-index: 5;
+}
+
+.scroll-fade-top {
+  top: 30px;
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
+}
+
+.scroll-fade-bottom {
+  bottom: 30px;
+  background: linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0));
+}
+
+/* fade only in the direction of travel */
+#paper-modal-content.is-scrolling.scrolling-down:not(.at-bottom) ~ .scroll-fade-bottom,
+#paper-modal-content.is-scrolling.scrolling-up:not(.at-top) ~ .scroll-fade-top {
+  opacity: 1;
+  transition: opacity 0.3s ease; /* quick fade-in when scrolling starts */
 }
 
 #paper-title {
@@ -398,6 +428,13 @@ body {
 
 .paper-image:hover {
   opacity: 0.8;
+}
+
+/* Image captions: slightly narrower than the 70%-wide image, centred beneath it */
+#paper-body .paper-caption {
+  width: 62%;
+  margin: -6px auto 24px;
+  text-align: center;
 }
 
 #paper-body {
