@@ -545,32 +545,26 @@ function updateEdgePan(e) {
   if (vy !== 0 && vx === 0) vx = axisV(e.clientX, w, marginX * cornerExpand)
 
   setEdgePan(vx, vy)
+  if (vx !== 0 || vy !== 0) positionEdgeCursor(e)
 }
 
-// Large chevron (arrowhead) cursor pointing in the drift direction, one per 8 directions
-const edgeCursorCache = {}
+// Chevron (arrowhead) drawn as a DOM overlay instead of a native cursor, so it
+// can be clamped to stay fully visible inside the window at the screen edges.
+const edgeCursorEl = document.createElement("div")
+edgeCursorEl.id = "edge-cursor"
+edgeCursorEl.innerHTML =
+  `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">` +
+  `<path d="M8 32 L24 10 L40 32" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>` +
+  `<path d="M8 32 L24 10 L40 32" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>` +
+  `</svg>`
+document.body.appendChild(edgeCursorEl)
 
-function edgeCursor(vx, vy) {
-  const vecX = vx > 0 ? -1 : vx < 0 ? 1 : 0 // view movement direction on screen
-  const vecY = vy > 0 ? -1 : vy < 0 ? 1 : 0
-  const key = `${vecX},${vecY}`
-  if (edgeCursorCache[key]) return edgeCursorCache[key]
-
-  const angle = (Math.atan2(vecX, -vecY) * 180) / Math.PI // up = 0deg
-  const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">` +
-    `<g transform="rotate(${angle} 24 24)">` +
-    `<path d="M8 32 L24 10 L40 32" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>` +
-    `<path d="M8 32 L24 10 L40 32" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>` +
-    `</g></svg>`
-
-  // hotspot at the chevron tip
-  const len = Math.hypot(vecX, vecY) || 1
-  const hx = Math.round(24 + (vecX / len) * 15)
-  const hy = Math.round(24 + (vecY / len) * 15)
-  const url = `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${hx} ${hy}, auto`
-  edgeCursorCache[key] = url
-  return url
+function positionEdgeCursor(e) {
+  const size = 48
+  const x = Math.min(Math.max(e.clientX - size / 2, 0), window.innerWidth - size)
+  const y = Math.min(Math.max(e.clientY - size / 2, 0), window.innerHeight - size)
+  edgeCursorEl.style.left = `${x}px`
+  edgeCursorEl.style.top = `${y}px`
 }
 
 function setEdgePan(vx, vy) {
@@ -579,9 +573,16 @@ function setEdgePan(vx, vy) {
   if (vx === 0 && vy === 0) {
     viewport.style.cursor = ""
     viewport.classList.remove("edge-panning")
+    edgeCursorEl.style.display = "none"
     return
   }
-  viewport.style.cursor = edgeCursor(vx, vy)
+  // hide the native cursor, point the overlay chevron in the drift direction
+  const vecX = vx > 0 ? -1 : vx < 0 ? 1 : 0 // view movement direction on screen
+  const vecY = vy > 0 ? -1 : vy < 0 ? 1 : 0
+  const angle = (Math.atan2(vecX, -vecY) * 180) / Math.PI // up = 0deg
+  edgeCursorEl.firstElementChild.style.transform = `rotate(${angle}deg)`
+  edgeCursorEl.style.display = "block"
+  viewport.style.cursor = "none"
   viewport.classList.add("edge-panning")
   if (!edgePanRAF) edgePanRAF = requestAnimationFrame(stepEdgePan)
 }
@@ -745,6 +746,8 @@ function setupEventListeners() {
   })
 
   resetViewBtn.addEventListener("click", resetView)
+
+  document.getElementById("reload-btn").addEventListener("click", () => location.reload())
 
   // Edge panning: track cursor across the whole document so modals/controls can cancel it
   document.addEventListener("mousemove", updateEdgePan)

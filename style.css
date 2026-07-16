@@ -146,6 +146,28 @@ body {
   margin-bottom: 4px;
 }
 
+/* Reload button */
+#reload-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #000000;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#reload-btn:hover {
+  background: #f0f0f0;
+}
+
 /* Viewport and board */
 #viewport {
   width: 100vw;
@@ -159,9 +181,19 @@ body {
   cursor: grabbing;
 }
 
-/* Keep the directional chevron while edge-panning, even over images */
+/* Keep the native cursor hidden while edge-panning, even over images */
 #viewport.edge-panning .image-item {
   cursor: inherit;
+}
+
+/* Overlay chevron shown during edge-panning; clamped to the window in JS */
+#edge-cursor {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  z-index: 1500;
+  display: none;
 }
 
 #board {
@@ -333,7 +365,7 @@ body {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
   white-space: pre-line; /* allow \n line breaks in titles */
-  font-size: 28px;
+  font-size: 33px;
   line-height: 1.4;
   margin: 0 0 8px 0; /* tight to the subtitle/author line below */
   text-align: center;
@@ -341,6 +373,7 @@ body {
 
 /* Centred subtitle/author lines at the top of a paper */
 #paper-body .paper-meta {
+  font-family: "Space Grotesk", sans-serif;
   text-align: center;
   margin-top: 0;
   margin-bottom: 6px;
