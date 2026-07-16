@@ -137,7 +137,7 @@ function parseMarkdown(text) {
   return html
 }
 
-const ABOUT_TITLE = "Occidentalism: Images for the so-called West"
+const ABOUT_TITLE = "Occidentalism\nImages for the so-called West"
 
 const ABOUT_CONTENT = `### Art Research & Media Philosophy Seminar
 

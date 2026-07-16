@@ -332,6 +332,7 @@ body {
 #paper-title {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
+  white-space: pre-line; /* allow \n line breaks in titles */
   font-size: 28px;
   line-height: 1.4;
   margin: 0 0 8px 0; /* tight to the subtitle/author line below */
