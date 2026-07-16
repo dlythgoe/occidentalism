@@ -28,7 +28,7 @@ The `data/index.json` file contains an array of image objects:
   "title": "Image Title",
   "description": "A brief description of the image",
   "tags": ["tag1", "tag2", "tag3"],
-  "date": "2024-01-15"
+  "credit": "Artist/Copyright-holder, Medium/Material, Place, Year"
 }
 \`\`\`
 
@@ -40,11 +40,11 @@ The `data/index.json` file contains an array of image objects:
 | `title` | string | Display title for the image |
 | `description` | string | Brief description shown in tooltips and modal |
 | `tags` | array | List of tags for filtering |
-| `date` | string | Date in YYYY-MM-DD format |
+| `credit` | string | Credit line: "Artist/Copyright-holder, Medium/Material, Place, Year" |
 
 ## Updating from Excel
 
-1. Create a spreadsheet with columns: `filename`, `title`, `description`, `tags`, `date`
+1. Create a spreadsheet with columns: `filename`, `title`, `description`, `tags`, `credit`
 2. For tags, separate multiple values with commas (e.g., "tag1, tag2, tag3")
 3. Export as CSV
 4. Convert to JSON using [csvjson.com](https://csvjson.com/csv2json)

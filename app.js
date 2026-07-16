@@ -7,6 +7,7 @@ const allTags = new Set()
 // Pan state
 let translateX = 0
 let translateY = 0
+let contentBounds = null // bounding box of rendered images, used to clamp panning
 let isPanning = false
 let startX = 0
 let startY = 0
@@ -20,12 +21,13 @@ const modalImage = document.getElementById("modal-image")
 const modalTitle = document.getElementById("modal-title")
 const modalDescription = document.getElementById("modal-description")
 const modalTags = document.getElementById("modal-tags")
-const modalDate = document.getElementById("modal-date")
+const modalCredit = document.getElementById("modal-credit")
 const modalClose = document.getElementById("modal-close")
 const resetFiltersBtn = document.getElementById("reset-filters")
 const resetViewBtn = document.getElementById("reset-view")
 const toggleFiltersBtn = document.getElementById("toggle-filters")
 const togglePapersBtn = document.getElementById("toggle-papers")
+const toggleAboutBtn = document.getElementById("toggle-about")
 const filterContainer = document.getElementById("filter-container")
 const papersContainer = document.getElementById("papers-container")
 const papersList = document.getElementById("papers-list")
@@ -79,6 +81,33 @@ function parseMarkdown(text) {
     // Headers (H2 and H3 only, H1 removed above)
     .replace(/^### (.+)$/gm, "<h3>$1</h3>")
     .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+    // Blockquotes (consecutive "> " lines become one blockquote)
+    .replace(/(?:^> ?.*(?:\n|$))+/gm, (block) => {
+      const content = block
+        .trim()
+        .split("\n")
+        .map((line) => line.replace(/^> ?/, ""))
+        .join("\n")
+      return "<blockquote>" + content + "</blockquote>\n"
+    })
+    // Unordered lists ("- item" or "* item" lines)
+    .replace(/(?:^[-*] .*(?:\n|$))+/gm, (block) => {
+      const items = block
+        .trim()
+        .split("\n")
+        .map((line) => "<li>" + line.replace(/^[-*] /, "") + "</li>")
+        .join("")
+      return "<ul>" + items + "</ul>\n"
+    })
+    // Ordered lists ("1. item" lines)
+    .replace(/(?:^\d+\. .*(?:\n|$))+/gm, (block) => {
+      const items = block
+        .trim()
+        .split("\n")
+        .map((line) => "<li>" + line.replace(/^\d+\. /, "") + "</li>")
+        .join("")
+      return "<ol>" + items + "</ol>\n"
+    })
     // Bold
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     // Italic
@@ -86,7 +115,7 @@ function parseMarkdown(text) {
     // Footnote references - now clickable with href
     .replace(/\[\^(\d+)\]/g, '<sup class="footnote-ref"><a href="#fn-$1" data-footnote="$1">[$1]</a></sup>')
     // Regular links [text](url)
-    .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" target="_blank">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
     // Paragraphs (double newlines)
     .replace(/\n\n/g, "</p><p>")
     // Single newlines to <br>
@@ -106,6 +135,26 @@ function parseMarkdown(text) {
   }
 
   return html
+}
+
+const ABOUT_TITLE = "Occidentalism: Images for the so-called West"
+
+const ABOUT_CONTENT = `### Art Research & Media Philosophy Seminar
+
+![Recreational facility in Samanid Park in Bukhara (Uzbekistan), March 12, 2025. Photo: Matthias Bruhn](images/bukhara_playground.jpg)
+
+*Recreational facility in Samanid Park in Bukhara (Uzbekistan), March 12, 2025. Photo: Matthias Bruhn*
+
+What does the term "the West" still stand for today? In the wake of globalization, its meaning has shifted repeatedly and now encompasses industrialized nations that may be located in East Asia and the South Pacific. The division between a global North and South also presents its own challenges. As an imaginary point of reference—and a symbol of both friend and foe—the West has clearly not yet outlived its usefulness. This provides an opportunity for an iconographic assessment.
+
+The seminar has compiled images of social stereotypes, idealized representations, and caricatures that do not necessarily originate in the West but are somehow meant to represent it. For the tour, the gatehouse in the entrance area of the HfG will be redesigned to display a selection of examples. The architecture itself serves as a model of Western modernism.
+
+**Participants:** Marie Herrndorff, Wera Hertenstein, Michael Janus, Lorena Karn, Darius Kühner, Florian Lips, Daniel Lythgoe, Michelle Nikolas, Alena Poser, Yidan Qin, Helena Schenk, Leonie Werner, and Julia Ziegler
+
+**Director:** Matthias Bruhn (Art Research & Media Philosophy)`
+
+function showAboutModal() {
+  showPaperModal({ title: ABOUT_TITLE, content: ABOUT_CONTENT })
 }
 
 function shuffleArray(array) {
@@ -238,13 +287,20 @@ function renderImages() {
   const filteredData =
     activeTags.size === 0 ? imageData : imageData.filter((item) => item.tags.some((tag) => activeTags.has(tag)))
 
-  const maxWidth = 300
-  const spacing = 30
+  const maxWidth = 450
+  const spacing = 60
+  const jitterX = 134 // random offset from the base grid; larger than spacing/2 allows slight overlaps
+  const jitterY = 166
   let currentX = 100
   let currentY = 100
   let rowHeight = 0
   let rowWidth = 0
-  const maxRowWidth = 1200
+  const maxRowWidth = 2700 // fits 5 columns of max-width images
+
+  let minX = Number.POSITIVE_INFINITY
+  let minY = Number.POSITIVE_INFINITY
+  let maxX = Number.NEGATIVE_INFINITY
+  let maxY = Number.NEGATIVE_INFINITY
 
   filteredData.forEach((item, index) => {
     const dims = imageDimensions.get(item.filename)
@@ -261,10 +317,18 @@ function renderImages() {
       rowWidth = 0
     }
 
+    const x = currentX + (Math.random() - 0.5) * 2 * jitterX
+    const y = currentY + (Math.random() - 0.5) * 2 * jitterY
+
+    minX = Math.min(minX, x)
+    minY = Math.min(minY, y)
+    maxX = Math.max(maxX, x + displayWidth)
+    maxY = Math.max(maxY, y + displayHeight)
+
     const imageItem = document.createElement("div")
     imageItem.className = "image-item"
-    imageItem.style.left = `${currentX}px`
-    imageItem.style.top = `${currentY}px`
+    imageItem.style.left = `${x}px`
+    imageItem.style.top = `${y}px`
     imageItem.dataset.tags = JSON.stringify(item.tags)
     imageItem.dataset.filename = item.filename
 
@@ -293,13 +357,26 @@ function renderImages() {
     rowWidth += displayWidth + spacing
     rowHeight = Math.max(rowHeight, displayHeight)
   })
+
+  contentBounds = minX === Number.POSITIVE_INFINITY ? null : { minX, minY, maxX, maxY }
+}
+
+function clampPan() {
+  if (!contentBounds) return
+  const visible = 150 // at least this much content must stay in view on each axis
+  const minTx = visible - contentBounds.maxX
+  const maxTx = viewport.clientWidth - visible - contentBounds.minX
+  const minTy = visible - contentBounds.maxY
+  const maxTy = viewport.clientHeight - visible - contentBounds.minY
+  translateX = Math.min(maxTx, Math.max(minTx, translateX))
+  translateY = Math.min(maxTy, Math.max(minTy, translateY))
 }
 
 function showModal(item) {
   modalImage.src = `images/${item.filename}`
   modalTitle.textContent = item.title
   modalDescription.textContent = item.description
-  modalDate.textContent = `Date: ${item.date}`
+  modalCredit.textContent = item.credit || ""
 
   modalTags.innerHTML = item.tags.map((tag) => `<span class="modal-tag">${tag}</span>`).join("")
 
@@ -316,7 +393,7 @@ function showModalByFilename(filename) {
     modalImage.src = `images/${filename}`
     modalTitle.textContent = filename
     modalDescription.textContent = ""
-    modalDate.textContent = ""
+    modalCredit.textContent = ""
     modalTags.innerHTML = ""
     modal.classList.remove("hidden")
     modal.style.zIndex = "3000" // Updated to ensure image modal is above paper modal
@@ -330,6 +407,30 @@ function hideModal() {
 function showPaperModal(paper) {
   paperTitle.textContent = paper.title
   paperBody.innerHTML = parseMarkdown(paper.content || "")
+
+  // Mark leading subtitle/author lines (italic-only paragraphs or an opening H3) for centred styling
+  let leadEl = paperBody.firstElementChild
+  let lastMeta = null
+  while (leadEl) {
+    const isEmptyP = leadEl.tagName === "P" && leadEl.textContent.trim() === ""
+    const isEmOnly =
+      leadEl.tagName === "P" &&
+      leadEl.firstElementChild &&
+      leadEl.firstElementChild.tagName === "EM" &&
+      leadEl.firstElementChild.textContent.trim() === leadEl.textContent.trim()
+    if (isEmptyP) {
+      leadEl = leadEl.nextElementSibling
+      continue
+    }
+    if (isEmOnly || leadEl.tagName === "H3") {
+      leadEl.classList.add("paper-meta")
+      lastMeta = leadEl
+      leadEl = leadEl.nextElementSibling
+      continue
+    }
+    break
+  }
+  if (lastMeta) lastMeta.classList.add("paper-meta-last")
 
   const paperImages = paperBody.querySelectorAll(".paper-image")
   paperImages.forEach((img) => {
@@ -357,8 +458,142 @@ function hidePaperModal() {
   paperModal.classList.add("hidden")
 }
 
+// --- Subtle parallax: mouse movement gives the canvas a gentle push ---
+// Velocity-based: each cursor movement adds an impulse against the direction of
+// travel; the canvas glides on in that direction and decelerates to a stop
+// (no spring-back).
+let parallaxVX = 0
+let parallaxVY = 0
+let parallaxRAF = null
+let lastMouseX = null
+let lastMouseY = null
+const PARALLAX_IMPULSE = -0.01 // velocity gained per px of cursor movement
+const PARALLAX_DAMPING = 0.93 // velocity kept per frame (higher = longer glide)
+
+function updateParallax(e) {
+  if (isPanning || !modal.classList.contains("hidden") || !paperModal.classList.contains("hidden")) {
+    lastMouseX = null
+    lastMouseY = null
+    return
+  }
+  if (lastMouseX !== null) {
+    parallaxVX += (e.clientX - lastMouseX) * PARALLAX_IMPULSE
+    parallaxVY += (e.clientY - lastMouseY) * PARALLAX_IMPULSE
+  }
+  lastMouseX = e.clientX
+  lastMouseY = e.clientY
+  if (!parallaxRAF) parallaxRAF = requestAnimationFrame(stepParallax)
+}
+
+function stepParallax() {
+  parallaxRAF = null
+  parallaxVX *= PARALLAX_DAMPING
+  parallaxVY *= PARALLAX_DAMPING
+  translateX += parallaxVX
+  translateY += parallaxVY
+  clampPan()
+  updateTransform()
+  if (Math.abs(parallaxVX) > 0.05 || Math.abs(parallaxVY) > 0.05) {
+    parallaxRAF = requestAnimationFrame(stepParallax)
+  }
+}
+
 function updateTransform() {
   board.style.transform = `translate(${translateX}px, ${translateY}px)`
+}
+
+// --- Edge panning: the canvas drifts when the cursor nears a screen edge ---
+let edgeVX = 0
+let edgeVY = 0
+let edgePanRAF = null
+
+function updateEdgePan(e) {
+  // inactive while dragging, over the controls, or with a modal open
+  if (
+    isPanning ||
+    !modal.classList.contains("hidden") ||
+    !paperModal.classList.contains("hidden") ||
+    e.target.closest("#controls")
+  ) {
+    setEdgePan(0, 0)
+    return
+  }
+
+  const w = viewport.clientWidth
+  const h = viewport.clientHeight
+  const marginX = w * 0.11
+  const marginY = h * 0.11
+  const minSpeed = 0.4 // px per frame just inside the margin
+  const maxSpeed = 2.6 // px per frame — deliberately slow
+  const plateau = 0.85 // fraction of the margin after which speed stays at max
+
+  const speed = (depth) => minSpeed + Math.min(1, depth / plateau) * (maxSpeed - minSpeed)
+
+  const axisV = (pos, size, margin) => {
+    if (pos < margin) return speed(1 - pos / margin) // reveal content on the low side
+    if (pos > size - margin) return -speed(1 - (size - pos) / margin)
+    return 0
+  }
+
+  let vx = axisV(e.clientX, w, marginX)
+  let vy = axisV(e.clientY, h, marginY)
+
+  // Near a corner, let the second axis engage from further in so the
+  // diagonal starts before the very corner
+  const cornerExpand = 1.6
+  if (vx !== 0 && vy === 0) vy = axisV(e.clientY, h, marginY * cornerExpand)
+  if (vy !== 0 && vx === 0) vx = axisV(e.clientX, w, marginX * cornerExpand)
+
+  setEdgePan(vx, vy)
+}
+
+// Large chevron (arrowhead) cursor pointing in the drift direction, one per 8 directions
+const edgeCursorCache = {}
+
+function edgeCursor(vx, vy) {
+  const vecX = vx > 0 ? -1 : vx < 0 ? 1 : 0 // view movement direction on screen
+  const vecY = vy > 0 ? -1 : vy < 0 ? 1 : 0
+  const key = `${vecX},${vecY}`
+  if (edgeCursorCache[key]) return edgeCursorCache[key]
+
+  const angle = (Math.atan2(vecX, -vecY) * 180) / Math.PI // up = 0deg
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">` +
+    `<g transform="rotate(${angle} 24 24)">` +
+    `<path d="M8 32 L24 10 L40 32" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>` +
+    `<path d="M8 32 L24 10 L40 32" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>` +
+    `</g></svg>`
+
+  // hotspot at the chevron tip
+  const len = Math.hypot(vecX, vecY) || 1
+  const hx = Math.round(24 + (vecX / len) * 15)
+  const hy = Math.round(24 + (vecY / len) * 15)
+  const url = `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${hx} ${hy}, auto`
+  edgeCursorCache[key] = url
+  return url
+}
+
+function setEdgePan(vx, vy) {
+  edgeVX = vx
+  edgeVY = vy
+  if (vx === 0 && vy === 0) {
+    viewport.style.cursor = ""
+    viewport.classList.remove("edge-panning")
+    return
+  }
+  viewport.style.cursor = edgeCursor(vx, vy)
+  viewport.classList.add("edge-panning")
+  if (!edgePanRAF) edgePanRAF = requestAnimationFrame(stepEdgePan)
+}
+
+function stepEdgePan() {
+  edgePanRAF = null
+  if (edgeVX === 0 && edgeVY === 0) return
+  translateX += edgeVX
+  translateY += edgeVY
+  clampPan()
+  updateTransform()
+  edgePanRAF = requestAnimationFrame(stepEdgePan)
 }
 
 function centerView() {
@@ -447,6 +682,7 @@ function setupEventListeners() {
       if (isPanning) {
         translateX = e.clientX - startX
         translateY = e.clientY - startY
+        clampPan()
         updateTransform()
       }
     }
@@ -471,6 +707,7 @@ function setupEventListeners() {
       e.preventDefault()
       translateX -= e.deltaX
       translateY -= e.deltaY
+      clampPan()
       updateTransform()
     },
     { passive: false },
@@ -509,6 +746,11 @@ function setupEventListeners() {
 
   resetViewBtn.addEventListener("click", resetView)
 
+  // Edge panning: track cursor across the whole document so modals/controls can cancel it
+  document.addEventListener("mousemove", updateEdgePan)
+  document.addEventListener("mousemove", updateParallax)
+  document.addEventListener("mouseleave", () => setEdgePan(0, 0))
+
   toggleFiltersBtn.addEventListener("click", () => {
     const isExpanded = filterContainer.style.display !== "none"
     filterContainer.style.display = isExpanded ? "none" : "block"
@@ -520,6 +762,8 @@ function setupEventListeners() {
     papersContainer.style.display = isExpanded ? "none" : "block"
     togglePapersBtn.textContent = isExpanded ? "Papers [+]" : "Papers [-]"
   })
+
+  toggleAboutBtn.addEventListener("click", showAboutModal)
 
   // Added scroll detection for paper modal content to show/hide scrollbar
   let scrollTimeout

@@ -1,100 +1,460 @@
 [
   {
-    "filename": "coke-1.jpg",
-    "title": "Coke",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["coca-cola", "advertising"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "cthulhu_lovecraft.jpg",
+    "title": "The Call of Cthulhu",
+    "description": "Der US-Amerikaner H.P. Lovecraft hat mit der Idee vom „Cosmicism“ eine neue literarische Philosophie begründet, die maßgeblich für seine Werke war. Zentral ist dabei der Gedanke, dass der Mensch ein irrelevanter Teil des Kosmos ist und jeden Moment verschwinden könnte. Während die reale Welt durch neue wissenschaftliche Entdeckungen entzaubert wurde, versuchte Lovecraft, neue fiktive Gefahren zu erdenken, weshalb die Bedrohungen in seinen Erzählungen aus den unerreichbaren Tiefen des Kosmos kommen wie beispielsweise dem Weltall oder der Vergangenheit beziehungsweise der Zukunft. Die Menschheit ist erst so kurze Zeit Teil des Universums, dass sie noch gar keinen Einfluss auf den Kosmos nehmen konnte, und ist aus genau diesem Grund allen länger existierenden Mächten ausgeliefert - Der Mensch ist ein Fremder auf Erden.",
+    "tags": [
+      "Philosophie",
+      "Kosmos",
+      "Aliens",
+      "Literatur",
+      "Sci-Fi",
+      "Weltraum",
+      "Naturwissenschaft"
+    ],
+    "credit": "Hugh Rakin, illustration, 1928"
   },
   {
-    "filename": "coke-2.jpg",
-    "title": "Coke",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["coca-cola", "consumerism"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "lineare_struktur_ii.jpg",
+    "title": "Lineare Struktur II",
+    "description": "Der russische Kosmismus dagegen ist eine kulturelle und philosophische Bewegung, die auch zur Schaffenszeit von Lovecraft aufkam. Allerdings wurde die Strömung erst in den 1970ern mit diesem Begriff benannt und hat sich diese Zuordnung nicht selbst gegeben. Die Weltanschauung der Mitglieder bringt unterschiedliche Themen der Wissenschaft, Religion und Metaphysik zusammen, die sich in der Ansicht festigen, dass sich der Menschheit durch ihren wissenschaftlichen Fortschritt die Möglichkeit bietet, unsterblich zu werden, so die Natur zu bezwingen und den Weltraum zu erforschen, wodurch schlussendlich ihre kosmische Bestimmung erfüllt werden kann. Werke wie Jules Vernes „Die Reise zum Mond“ (1870) und H. G. Wells „Die Zeitmaschine“ (1895) formten die Ideologie der Anhänger, aber auch das russisch-orthodoxe Christentum, russische Philosophie und die neuen Errungenschaften im Bereich der Naturwissenschaften der Zeit waren wichtige Einflüsse. Aus heutiger Sicht sind eindeutige Verbindungen zur sowjetischen Raumfahrt, dem Transhumanismus und der gesamten Idee der Weltraumbesiedelung / -kolonialisierung, die heute in Silicon Valley sehr prominent sind, zu erkennen.",
+    "tags": [
+      "Malerei",
+      "Russland",
+      "Transhumanismus",
+      "Strahlen",
+      "Philosophie",
+      "Unsterblichkeit",
+      "Weltraum",
+      "Naturwissenschaft"
+    ],
+    "credit": "Iwan Alexejewitsch Kudrjaschow, 1920er"
   },
   {
-    "filename": "coke-3.jpg",
-    "title": "Joey 1",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["coca-cola", "celebrity"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "bezos_blue_origin.jpg",
+    "title": "Billionaire Space Race",
+    "description": "Die Hochphase des Space Race fand in den 1950-60ern statt und offiziell gilt der Wettkampf zwischen den USA und der UDSSR bzw. heute Russland durch die Mondlandung der Apollo 11 (1969) als beendet. Das heute laufende billionaire space race kann allerdings als eindeutiger Nachfolger oder als Weiterentwicklung des ersten gesehen werden. Während das Space Race zur Zeit des Kalten Krieges ein Wettkampf zwischen den beiden mächtigsten Nationen war, ist das billionaire space race komplett losgelöst von nationalen außenpolitischen Interessen und nur noch durch extraterrestrische Business-Opportunities motiviert. Ursprünglich ging es um Propaganda zur Verbreitung einer kapitalistisch (USA-ideologisch) / kommunistisch (osteuropäisch) geprägten Weltordnung; Mittlerweile ist das Ziel die private Vermögensvergrößerung und die Umsetzung der eigenen transhumanistisch geprägten Ideologien, die fortschrittlich (westlich) verpackt werden, obwohl sie sich (möglicherweise unwissend) auf Gedanken der russischen Kosmismus-Bewegung zurück beziehen mit ihren transhumanistischen Ansätzen. Zu dieser Verzerrung kommt natürlich noch hinzu, dass das Space Race nur möglich war durch die Raketentechnikforschung des NS-Regimes, deren führende Wissenschaftler zwischen den Siegermächten aufgeteilt wurden und für diese weiterforschten.",
+    "tags": [
+      "Reichtum",
+      "Billionaire",
+      "Kolonialisierung",
+      "Transhumanismus",
+      "Weltraum",
+      "Propaganda",
+      "Kapitalismus",
+      "Tourismus",
+      "NS-Zeit"
+    ],
+    "credit": "Tom Kimmel, photograph, 2017"
   },
   {
-    "filename": "coke-4.jpg",
-    "title": "Joey 2",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["coca-cola", "celebrity"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "pioneer_plaque.jpg",
+    "title": "Pioneer Plakette",
+    "description": "Im vermeintlichen Gegensatz zu dieser propagandistischen Raumfahrt stehen die wenigen Versuche, dem Kosmos die Existenz der Erdbevölkerung mitzuteilen und auf eine Antwort zu hoffen – angefangen mit der Pioneer-Plakette, die an den Sonden Pioneer 10 und 11 anlässlich deren Fluges zum Jupiter befestigt wurde. Innerhalb von drei Wochen stellten Carl Sagan, Frank Drake und Linda Salzmann die Grafik zusammen, die zwei Wasserstoffatome im Hyperfeinstrukturübergang, zwei nackte Menschen, die Silhouette der Sonde selbst und das Sonnensystem zeigt. Die benutzten Darstellungsweisen sind eindeutig „europäisch-westlich“ geprägt und setzen perspektivische Sehgewohnheiten voraus, um verstehen zu können, dass ein Fluchtpunkt oder schematische Zweidimensionalität genutzt werden. Am schwerwiegendsten wurde die Benutzung eines Pfeils kritisiert, da es sehr wahrscheinlich ist, dass Lebensformen, die keinen jagenden Ursprung haben und deshalb auch keine Schusswaffen entwickelt haben, die Charakteristika dieses Objekts verstehen. Für uns Menschen ist direkt impliziert, dass der Pfeil eine Richtung und eine Bewegung anzeigt, die durch die Spitze markiert ist. Aliens könnten möglicherweise den Pfeil auf der Pioneer-Plakette, der die vage Flugbahn der Sonde anzeigt, als eine reale räumliche Struktur in unserem Sonnensystem lesen.",
+    "tags": [
+      "Nacktheit",
+      "Propaganda",
+      "Weltraum",
+      "Gewalt",
+      "Sonne",
+      "Perspektive",
+      "Körper"
+    ],
+    "credit": "Carl Sagan, Frank Drake, Linda Saltzmann, design, 1972 / 1973"
   },
   {
-    "filename": "naked-1.jpg",
-    "title": "Nakedness",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["nakedness", "body"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "arecibo_message.jpg",
+    "title": "Grafische Darstellung der Arecibo Message",
+    "description": "Die Arecibo Message wurde 1974 von Puerto Rico aus gesendet und war ein Radiowellensignal, das unter anderem von Frank Drake designed wurde. Falls die Radiowellen von einer anderen Zivilisation empfangen werden und als Bild ausgelesen werden können, könnte Folgendes zu erkennen sein: Zahlen 1 – 10, chemische Elemente bzw. DNS, Nukleotide (Bausteine der menschlichen DNS), Struktur der DNS, die Menschheit (durchschnittliche Körpergröße, Anatomie, Anzahl der Erdbevölkerung), Sonnensystem mit Position der Erde, das Arecibo Teleskop. Trotz Tests, welche die Entschlüsselbarkeit dieser Botschaften versucht haben herauszufinden, bleibt fraglich, ob Lebensformen außerhalb der Erde die Botschaften überhaupt wahrnehmen oder die verwendeten Symbole lesen könnten – abgesehen von der verschwindend geringen Wahrscheinlichkeit, dass die Nachrichten überhaupt empfangen werden.",
+    "tags": [
+      "Aliens",
+      "Weltraum",
+      "Radio",
+      "Sound",
+      "Code",
+      "Naturwissenschaft",
+      "Statistik",
+      "Kommunikation"
+    ],
+    "credit": "Frank Drake, design, 1974"
   },
   {
-    "filename": "naked-2.jpg",
-    "title": "Nakedness",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["nakedness", "vulnerability"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "last_pictures_artifact.jpg",
+    "title": "Last Pictures Artifact",
+    "description": "Echostar XVI wurde erst 2012 in die Erdumlaufbahn geschossen und ist so ein sehr viel zeitgenössischeres Beispiel in dieser Reihe von archivarischen Vermittlungsversuchen zwischen Kosmos und Menschheit. An dem kommerziellen Kommunikationssatelliten der Echostar Corporation wurde das last pictures artifact, eine von dem amerikanischen Künstler Trevor Paglen kuratierte Bildersammlung, transportiert. Die Siliziumscheibe wurde von der New Yorker Organisation „creative time“ in Auftrag gegeben und wird an dem Satelliten, der nach 2027 als Weltraumschrott in einen sogenannten Friedhof geleitet wird, wahrscheinlich mehrere Milliarden Jahre weiter existieren. Das last pictures artifact soll als Denkmal für das Anthropozän mit den gespeicherten Bildern verschiedenste Arten zeigen, wie die Erde durch menschlichen Einfluss verändert wurde. Mit sehr großer Wahrscheinlichkeit wird die Menschheit nie erleben, dass die Siliziumscheibe im Weltraum entdeckt und zurück auf den Planeten gebracht wird. Die Frage ist also: Ist das Denkmal für den Kosmos insgesamt als abstrakte Lebensform gedacht? Selbst in dem unwahrscheinlichen Fall, dass extraterrestrisches Leben irgendwo im Weltraum entstanden ist, würde der Echostar-Satellit niemals in einem riesigen Feld Weltraumschrott entdeckt werden.",
+    "tags": [
+      "Kommunikation",
+      "Weltraum",
+      "Müll/Schrott",
+      "Kapitalismus",
+      "Privatisierung",
+      "Popkultur",
+      "Zeitgenössische_Kunst"
+    ],
+    "credit": "Trevor Paglen, 2012"
   },
   {
-    "filename": "naked-3.jpg",
-    "title": "M.M.",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["nakedness", "celebrity"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "golden_records_1.jpg",
+    "title": "Voyager Golden Record Cover",
+    "description": "Das bekannteste Beispiel in dieser Reihe der versuchten Kommunikation mit dem All sind die Voyager Golden Records, die 1977 von der NASA in das All befördert wurden. An Bord der Raumsonden ist jeweils ein Datenträger in Form einer Schallplatte befestigt, die 118 Bilder (20 bunt, 98 schwarz-weiß), das 12-minütige Sound-Essay „Sounds of Earth“, 87min Musik aus unterschiedlichsten Genres und Grüße in 55 Sprachen enthält. Carl Sagan hat auch diesen Datenträger kuratiert und entworfen mit einem Team aus 10 weiteren Personen, innerhalb von 6 Wochen. Die Hülle der Schallplatte zeigt Symbole, die von der Pioneer-Plakette übernommen wurden, plus weitere schematische Darstellungen, die die Bedienung und Abspielweise der Schallplatte einem möglichen Finder erklären sollen.",
+    "tags": [
+      "USA",
+      "Gold",
+      "Fotografie",
+      "Musik",
+      "Sound",
+      "Kommunikation",
+      "Weltraum",
+      "NASA"
+    ],
+    "credit": "Carl Sagan and team, design, 1977"
   },
   {
-    "filename": "car-1.jpg",
-    "title": "Sports Car 1",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["sports-cars", "speed"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "golden_records_2.jpeg",
+    "title": "Voyager Golden Record",
+    "description": "Obwohl die Golden Records nach dem Ende des Space Race zusammengestellt und als große Chance der Menschheit, dem Kosmos eine Botschaft mitzuteilen, dargestellt wurden, ist aus heutiger Sicht nicht zu verleugnen, dass eine goldene Schallplatte, verziert mit einem Abdruck der Blue Marble und der händischen Unterschrift „to the makers of music – all worlds all times“, das Selbstverständnis der Gruppe und ihrer Arbeit enthüllt. Abgesehen davon ist natürlich ein goldenes Objekt, was die gesamte Weltbevölkerung vertreten soll, als eine Zurschaustellung von weltlicher sowie westlicher Dekadenz zu lesen, auch wenn die beabsichtigte Botschaft von Carl Sagan und seinem Team als ein selbstaufopfernder Dienst im Sinne der Menschheit gemeint war. Die Voyager Golden Records sind in jeder Facette ihres güldenen Glanzes das perfekte NASA-Prestige-Objekt: von der strahlenden Symbolkraft des Materials bis zu dem Gruß von Kurt Waldheim dem UN-Generalsekretär 1972–1981, einem ehemaligen SA-Mitglied und Kriegsverbrecher.",
+    "tags": [
+      "USA",
+      "NASA",
+      "Weltraum",
+      "Kommunikation",
+      "Statussymbol",
+      "Gold",
+      "Dekadenz",
+      "NS-Zeit",
+      "UN"
+    ],
+    "credit": "Carl Sagan and team, design, 1977"
   },
   {
-    "filename": "car-2.jpg",
-    "title": "Sports Car 2",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["sports-cars", "luxury"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "Meme_Farbfilter.jpg",
+    "title": "Mexiko durch die Brille Hollywoods",
+    "description": "Dieser Instagram-Beitrag greift ein in den sozialen Medien weit verbreitetes Phänomen auf: den gezielten Einsatz von Farbfiltern in Film- und Fernsehproduktionen zur Charakterisierung bestimmter Orte. Besonders auffällig ist dies bei der Darstellung Mexikos. Szenen, die dort spielen, werden häufig mit warmen Gelb-, Orange- oder Sepiatönen versehen, während Aufnahmen in den USA oder Europa überwiegend in neutralen oder kühlen Farbtönen erscheinen. Diese visuelle Codierung transportiert subtile kulturelle Botschaften. Die warme Farbgebung suggeriert Hitze, Trockenheit, Rückständigkeit und Exotik und prägt so die Wahrnehmung des globalen Südens. Demgegenüber erscheint der Westen durch seine natürliche oder kühlere Farbpalette modern, geordnet und fortschrittlich. Die Farbgestaltung dient somit nicht nur ästhetischen Zwecken, sondern reproduziert zugleich stereotype Vorstellungen über unterschiedliche Weltregionen und verstärkt bestehende Nord-Süd-Narrative.",
+    "tags": [
+      "Mexiko",
+      "USA",
+      "Film",
+      "Filter"
+    ],
+    "credit": "Instagram @thefuck.tv, 06.03.2026"
   },
   {
-    "filename": "protest-1.jpg",
-    "title": "Protest",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tags": ["protest", "activism"],
-    "date": "Artist/Copyright-holder, Medium/Material, Place, Year"
+    "filename": "Koka_Plantage_Kinder.jpeg",
+    "title": "Kokain: Die Lebensgrundlage vieler lateinamerikanischer Familien",
+    "description": "Das Bild zeigt drei Kinder in Mitten getrockneter Kokablätter. Die Aufnahme stammt aus einer Spiegel-Reportage des Fotografen Rodrigo Abd über Mochileros in Peru – junge Männer, die unter Gefahr Kokablätter zu Fuß über die Anden transportieren. Laut dem Autor sangen die Kinder während der Aufnahme: „Schau, wie viel Geld ich habe.“ ¹ Dies weist darauf hin, dass bereits Kinder den ökonomischen Wert der Kokablätter für die regionale Bevölkerung wahrnehmen und verinnerlicht haben. Gleichzeitig macht die Szene die globale Asymmetrie des Kokainhandels deutlich. Während Kokain im Westen häufig mit Wohlstand, Freizeit und individuellem Konsum assoziiert wird, steht der Kokaanbau in Lateinamerika für harte körperliche Arbeit, wirtschaftliche Abhängigkeit und strukturelle Ungleichheit. Viele Familien sind aufgrund fehlender wirtschaftlicher Alternativen auf den Anbau angewiesen. Gleichzeitig fördern die hohen Gewinne des internationalen Drogenhandels Gewalt, organisierte Kriminalität und soziale Instabilität. Die eigentlichen Profite entstehen überwiegend in den Konsumländern, während die sozialen und sicherheitspolitischen Folgen vorwiegend die Produktionsregionen treffen ².\"",
+    "tags": [
+      "Drogen",
+      "Kokain",
+      "Konsum",
+      "Ausbeutung",
+      "Lateinamerika"
+    ],
+    "credit": "Rodrigo Abd / AP / dpa, Foto, Spiegel Panorama, 2015"
+  },
+  {
+    "filename": "Drogen_im_Westen.jpg",
+    "title": "Der Westen im Dauerrausch",
+    "description": "Das KI-generierte Bild sollte „ein stereotypisch westliches Bild der Partyszene, des Drogenkonsums und der Finanzwelt im Pop-Art-Stil“ darstellen. Entstanden ist ein Konglomerat westlicher Wohlstands- und Konsumsymbole: Geldbündel, Partys, Statussymbole, Aktienkurse, Wolkenkratzer und verschiedenste Drogen. Diese Bildsprache orientiert sich an der medialen Inszenierung des Finanzmilieus der 2000er-Jahre, die insbesondere durch Filme wie The Wolf of Wall Street (2013) oder The Big Short (2015) geprägt wurde. Exzessiver Konsum erscheint darin häufig als Ausdruck von Erfolg, Macht und gesellschaftlichem Status. Was lange als Randphänomen einer kleinen Finanzelite wahrgenommen wurde, hat sich inzwischen zu einem gesamtgesellschaftlichen Phänomen entwickelt. Der zunehmende Konsum verschiedener Drogen – insbesondere von Kokain ¹ – trägt nicht nur zur Stärkung organisierter Kriminalität, Korruption, Gewalt und Umweltzerstörung in den Anbau- und Transitländern ² ³ bei, sondern gefährdet zunehmend auch die demokratische Stabilität westlicher Staaten.\"",
+    "tags": [
+      "Drogen",
+      "Konsum",
+      "Börse",
+      "Freiheit",
+      "Rausch",
+      "Party"
+    ],
+    "credit": "Michelle Nikolas | ChatGPT, KI-generiert, 2026"
+  },
+  {
+    "filename": "Cage_Fontana_Mix_1958.jpg",
+    "title": "Fontana Mix",
+    "description": "Graphic score by John Cage. The notation consists of transparent sheets — wandering curved lines, a rectilinear grid, scattered points and a straight line — which are superimposed in any combination; measurements between the resulting intersections yield the parameters of a performance. The score prescribes no sounds but configures a chance-generating apparatus: every realization is different, and the composer's taste is displaced onto a procedure. First realized as a tape piece, Fontana Mix has since served as the basis for numerous further works and performances.",
+    "tags": [
+      "music",
+      "notation",
+      "chance",
+      "indeterminacy",
+      "score",
+      "avantgarde",
+      "USA"
+    ],
+    "credit": "John Cage, graphic score, 1958"
+  },
+  {
+    "filename": "cage_433_upscaled.png",
+    "title": "4'33\" Score Excerpt",
+    "description": "Page from the score of John Cage's 4'33\" (1952), the so-called silent piece. Bar the opening and closing of the keyboard lid, the performer produces no intentional sounds for the duration of the three movements. The empty staves frame whatever happens to be audible — coughs, shuffling feet, the hum of ventilation — as music. Widely ridiculed as a piece in which nothing happens, its point lay precisely in the withdrawal of intention: by producing no deliberate sound, Cage emphasised the contingency of auditory experience.",
+    "tags": [
+      "music",
+      "notation",
+      "silence",
+      "chance",
+      "score",
+      "USA"
+    ],
+    "credit": "John Cage, score, 1952"
   },
   {
     "filename": "Guido_e_Teodaldo.jpg",
-    "title": "Protest",
-    "description": "Guido of Arezzo (left) showing Bishop Theodaldus of Arezzo a monochord, depicted in an 11th-century medieval manuscript",
-    "tags": ["music", "notation", "renaissance"],
-    "date": "1180-1199"
+    "title": "Guido of Arezzo with monochord and Tedald, bishop of Arezzo",
+    "description": "Medieval manuscript miniature showing the Benedictine monk Guido of Arezzo demonstrating the monochord to Tedald, bishop of Arezzo. Guido's innovations — staff notation and solmization — turned music from an orally transmitted practice into one that could be written, stored and taught, laying the ground for the Western idea of the composition as a fixed, authored work. The notated score, precondition of the compositional authority that later chance-based practices would come to unsettle, begins here as an instrument of instruction and standardisation.",
+    "tags": [
+      "music",
+      "notation",
+      "middle-ages",
+      "christianity",
+      "manuscript",
+      "pedagogy"
+    ],
+    "credit": "Manuscript miniature, ca. 12th century"
   },
   {
-    "filename": "Ut_Queant_Laxis.png",
-    "title": "The Ut Queant Laxis",
-    "description": "The hymn, composed by Guido de Arezzo, from which he developed the ut–re–mi–fa–sol–la (do–re–mi–fa–so–la) mnemonic, which would later form the basis of solfège.",
-    "tags": ["music", "notation", "renaissance"],
-    "date": "Ca. 991-1033"
+    "filename": "i_ching_hexagrams.png",
+    "title": "The 64 Hexagrams of the I Ching",
+    "description": "Circular arrangement of the 64 hexagrams of the I Ching (Book of Changes), the ancient Chinese divination text. Hexagrams are generated by coin tosses or yarrow-stalk manipulations; the text served for thousands of years as a philosophical taxonomy of the universe, a guide to an ethical life, a manual for rulers, and an oracle. Following the Wilhelm/Baynes translation of 1950 it became a flexible resource for Western artists and counter-culturalists — most prominently John Cage, who used its chance operations to generate compositional decisions in works such as Music of Changes (1951).",
+    "tags": [
+      "i-ching",
+      "china",
+      "divination",
+      "chance",
+      "code",
+      "philosophy"
+    ],
+    "credit": ""
   },
   {
-    "filename": "eb_1952.jpg",
-    "title": "December 1952",
-    "description": "December 1952 is perhaps Earl Brown's most famous score. It is part of a larger set of unusually notated music called FOLIO.",
-    "tags": ["music", "notation", "abstraction"],
-    "date": "1952/1953"
-  },  
+    "filename": "pollock_lavender_mist_1950.jpg",
+    "title": "Number 1, 1950 (Lavender Mist)",
+    "description": "Drip painting by Jackson Pollock. Working on canvas laid on the floor, Pollock poured, flicked and dripped paint in gestures that court contingency while remaining choreographed — chance harnessed within an expressive, authorial practice. Where Cage used chance operations to withdraw the artist's taste, action painting mobilised chance as the very signature of subjectivity, making the two positions instructive opposites within the mid-century embrace of indeterminacy. National Gallery of Art, Washington.",
+    "tags": [
+      "painting",
+      "abstract-expressionism",
+      "chance",
+      "gesture",
+      "USA"
+    ],
+    "credit": "Jackson Pollock, oil, enamel and aluminium paint on canvas, National Gallery of Art, Washington, 1950"
+  },
   {
-    "filename": "cage_fontana_1958.jpg",
-    "title": "Fontana Mix - Cage, John",
-    "description": "«Fontana Mix» consists of a total of 20 pages of graphic materials: ten pages covered with six curved lines each, and ten sheets of transparent film covered with randomly-placed points. In accordance with a specific system, and using the intersecting points of a raster screen, two of the pages produce connecting lines and measurements that can be freely assigned to musical occurrences such as volume, tone color, and pitch. The interpreter no longer finds a score in the customary sense, but rather a treatment manual for the notation of a composition. -Martina Sauerwald",
-    "tags": ["music", "notation", "aleatoric"],
-    "date": "1958"
-  }  
+    "filename": "tzara_poem.jpg",
+    "title": "To Make a Dadaist Poem",
+    "description": "Typeset realization of Tristan Tzara's instructions \"To Make a Dadaist Poem\" (1920): cut out the words of a newspaper article, shake them gently in a bag, and copy them out in the order they leave it — \"the poem will be like you.\" Not a naïve celebration of chance but an attack on authorial control and on the aesthetic and political structures that had led Europe into catastrophe, the cut-up is among the most canonical examples of chance procedure in the historical avant-garde.",
+    "tags": [
+      "dada",
+      "poetry",
+      "chance",
+      "cut-up",
+      "avantgarde",
+      "print"
+    ],
+    "credit": "Tristan Tzara, 1920"
+  },
+  {
+    "filename": "kitchendebate.jpg",
+    "title": "WohnBildWelt: Küche (Kitchen Debate)",
+    "description": "34 Jahre nach Margarete Schütte-Lihotzkys Entwurf der Frankfurter Küche wird im Juli 1959, in der Hochphase des Kalten Krieges, eine amerikanische Einbauküche Schauplatz und Auslöser eines ideologischen Disputs zwischen Nikita Chruschtschow und Richard Nixon. Mit seiner dokumentierten Aussage „This is the kind which is built in thousands of units for direct installations in the houses. In America, we like to make life easier for women...“1 macht Nixon nicht allein die Küchenmöbel und die elektronischen Geräte zum Gegenstand der Debatte, sondern buchstäblich auch die Frau und ihre vermeintliche Befreiung durch technisierte Konsumgüter. Diese Dynamik spiegelt sich in der symbolischen Bildpolitik der Schwarz-Weis-Fotografie wider. Die Absperrung des Displays deplatziert die präsentierende Frau als gefangenes Ausstellungsobjekt, während die Staatsmänner und das überwiegend männlich gelesene Publikum durch Betrachten, Sprechen und Zeigen eine bildliche und gesellschaftliche Hierarchie darbieten. Die USA unternehmen bereits in den frühen 50er Jahren Ausstellungen wie So wohnt Amerika in Frankfurt, um den American Way of Life durch Konsumgüter zu propagieren.2",
+    "tags": [
+      "Kapitalismus",
+      "Sozialismus",
+      "Frauenbild",
+      "Modell"
+    ],
+    "credit": "Fotografie, Moskau, 1959"
+  },
+  {
+    "filename": "pabcoparaffinecompanies.jpg",
+    "title": "WohnBildWelt: Küche (Pabco Parafine Companies)",
+    "description": "Der Gendertypus, der in der Kitchen Debate politisiert und instrumentalisiert wird, spiegelt sich in der Werbung für Wohngüter. So auch bei dem kalifornischen Farb- und Baustoffhersteller Pabco Parrafine Companies, dessen Slogan „The West was made for Pabco. (And Pabco is made for the West!)“ eine westliche Überlegenheitsideologie versprachlicht. Die Grafik zeigt eine Frau, die repräsentativ auf einem unbequem anmuteten Möbel sitzt, das Architektur und Mobiliar verschmelzen lässt. Im Hintergrund streichen Vater und Sohn ein Bauelement des Hauses. Die Space Age Ästhetik der 1960er Jahre lässt sich auch vor dem Hintergrund des Kalten Krieges und seinem territorialen Machtkampf betrachten. Die Platzierung der Modelelemente inmitten einer Wüstenlandschaft betont zum einen das westliche Versprechen der Freiheit, der Freizügigkeit und den gesellschaftlich tief verankerte Traum vom Eigenheim, verbunden mit Attributen wie Erfolg. Das modulare Fertighausdesign hebt dies hervor. Zum anderen reflektiert diese Bildsprache die Besiedelung von Landschaften, die sich im Kalten Krieg auf den Weltraum ausdehnt. In einer dritten Ebene und in Anspielung auf den Slogan lässt sich die Wüstenlandschaft mit dem literarischen und popkulturellen Genre des Western betrachten, das sich auf die Vereinnahmung indigener Wohnräume durch Siedler der amerikanischen Ostküste beruht, betrachten.",
+    "tags": [
+      "Advertisement",
+      "Space Age",
+      "Western",
+      "Kleinfamile"
+    ],
+    "credit": "Pabco Paraffine Companies, Werbegrafik, 1960"
+  },
+  {
+    "filename": "legofriends.jpg",
+    "title": "WohnBildWelt: Küche (Olivia`s Haus)",
+    "description": "Das Bausteinset Olivia`s Haus aus der Serie Lego Friends, das 2012 auf den Markt kam, bedient sich an der US-amerikanischen Vision einer stereotypisierten, Weißen, heteronormativen Kleinfamilie. Wiederzufinden sind amerikanische Entwicklungen wie der Haushaltskühlschrank oder der Standmixer, die heute von dem Westen als globales Produkt definiert sind. Die gesellschaftlichen Funktionen sind in der Produktgrafik deutlich abgegrenzt: Während die Mutterfigur lächelnd in der Küche arbeitet, winkt die Vaterfigur mit einer nahezu karikativ wirkenden Zufriedenheit aus dem Wohnzimmersessel. Die Bausteinstruktur nach dem Entwurf des dänischen Kultunternehmens erinnert zugleich an die Modularität amerikanischer Fertighäuser und ihr gesellschaftliches Versprechen. Anhand Vermarktung der Lego Friends Produktlinie scheint die Zielgruppe eindeutig Mädchen zu sein. Die frühe Pädagogisierung des amerikanischen als westlich etablierten Wohnideals setzt sich bei erwachsenen Konsumentinnen von Wohn- und Lifestylezeitschriften, die ihren Ursprung bereits in 19en Jahrhundert mit dem Aufkommen der westlichen Moderne finden, oder in den sozialen Netzwerken fort.1",
+    "tags": [
+      "Lego",
+      "Kleinfamile"
+    ],
+    "credit": "LEGO Friends, Produktgrafik, 2012"
+  },
+  {
+    "filename": "Ayahuasca_Retreat.jpg",
+    "title": "Ayahuasca Retreat",
+    "description": "Dieser Ausschnit einer Website für ein Ayahuasca Retreat steht stellvertreten für den Selbstoptiemierungswahn des Westens, der rituelle Zeremonien kommerzialisiert, um in kürzester Zeit zu immaginierter Freiheit und Erleuchtung zu gelangen",
+    "tags": [
+      "Drogen",
+      "Konsum",
+      "Freiheit",
+      "Selbstoptimierung",
+      "Spiritualität"
+    ],
+    "credit": "ayahuascaretreat.co, Screenshot, 2026"
+  },
+  {
+    "filename": "Frau-nimmt-drogen.jpg",
+    "title": "Frau nimmt Party-Drogen",
+    "description": "Symbolbild: Eine junge Frau mit einer Pille auf der Zunge – Sinnbild des hedonistischen Party-Konsums synthetischer Drogen im Westen.",
+    "tags": [
+      "Drogen",
+      "Konsum",
+      "Party",
+      "Freiheit",
+      "Rausch"
+    ],
+    "credit": "LIGHTFIELD STUDIOS / Adobe Stock, 2019"
+  },
+  {
+    "filename": "Koka_Sack_.jpg",
+    "title": "Mochileros- junger Mann mit Sack voll Kokablättern",
+    "description": "Ein kolumbianischer Bauer transportiert einen Sack Koka-Blätter. Für viele Familien Lateinamerikas ist der Koka-Anbau mangels wirtschaftlicher Alternativen die zentrale Lebensgrundlage.",
+    "tags": [
+      "Drogen",
+      "Kokain",
+      "Konsum",
+      "Ausbeutung",
+      "Lateinamerika"
+    ],
+    "credit": "Jose Azel, Foto, Berliner Zeitung, 2023"
+  },
+  {
+    "filename": "protest-gegen-pharmabusiness-in-cleveland-ohio.jpg",
+    "title": "Protest gegen die Pharmaindustrie in Cleveland, Ohio",
+    "description": "Angehörige und Opfer der Opioid-Epidemie protestieren vor dem Bundesgericht in Cleveland, Ohio, gegen die Pharmaindustrie und fordern Milliarden zur Finanzierung von Reha-Zentren.",
+    "tags": [
+      "Drogen",
+      "Opium",
+      "Krise",
+      "Medizin",
+      "Protest",
+      "USA"
+    ],
+    "credit": "Lorenz Rollhäuser / Deutschlandradio, Foto, 2018"
+  },
+  {
+    "filename": "Hippie-movement-counterculture-1960s-1970s.jpg",
+    "title": "Die Hippiebewegung als Counterculture der 1960er und 1970er Jahre",
+    "description": "Die Gegebewegung der Hippies ist das Resultat einer Generation, die soziale Normen und Traditionen hinterfragt und sich jenen wiedersetzt.",
+    "tags": [
+      "Droge",
+      "Hippies",
+      "Freiheit",
+      "Love",
+      "68er-Bewegung"
+    ],
+    "credit": "Lisa Law / National Museum of American History, Foto, 1968"
+  },
+  {
+    "filename": "09_Main_intermediate_or_final_recipient_countries_of_HEROIN_shipments_as_described_page-0001.jpg",
+    "title": "Main intermediate or final recipient countries of heroin shipments",
+    "description": "Karte aus dem UNODC World Drug Report 2025: Haupt-Zwischen- und Zielländer von Heroin-Lieferungen, wie in gemeldeten Sicherstellungen beschrieben (2020–2023). Opiate wie Heroin machen – anders als Kokain und synthetische Drogen – auch in Zentral- und Südost-Asien einen erheblichen Anteil des Konsums aus.",
+    "tags": [
+      "Drogen",
+      "Heroin",
+      "Opium",
+      "Handel",
+      "Karte",
+      "Statistik"
+    ],
+    "credit": "UNODC World Drug Report 2025"
+  },
+  {
+    "filename": "06_Main_intermediate_or_final_recipient_countries_of_COCAIN_shipments_as_described_page-0001.jpg",
+    "title": "Main intermediate or final recipient countries of cocaine shipments",
+    "description": "Karte aus dem UNODC World Drug Report 2025: Haupt-Zwischen- und Zielländer von Kokain-Lieferungen, wie in gemeldeten Sicherstellungen beschrieben (2020–2023). Ein Großteil der Kokain-Lieferungen landet in westlichen Ländern, während lateinamerikanische Länder wie Kolumbien, Venezuela und Mexiko die Hauptexporteure sind.",
+    "tags": [
+      "Drogen",
+      "Kokain",
+      "Handel",
+      "Karte",
+      "Statistik"
+    ],
+    "credit": "UNODC World Drug Report 2025"
+  },
+  {
+    "filename": "hamilton_just_what_is_it_1956.jpeg",
+    "title": "Just what is it that makes today's homes so different, so appealing?",
+    "description": "Richard Hamilton's collage, made for the This Is Tomorrow exhibition in London, assembles bodybuilder, pin-up, branded goods and media technologies into a prototype image of postwar consumer culture — often cited as the first work of Pop Art.",
+    "tags": [
+      "Pop-Art",
+      "collage",
+      "consumerism",
+      "advertising",
+      "domesticity",
+      "UK"
+    ],
+    "credit": "Richard Hamilton, collage, 1956"
+  },
+  {
+    "filename": "warhol_campbells_soup_cans_1962.jpg",
+    "title": "Campbell's Soup Cans",
+    "description": "Andy Warhol's thirty-two canvases, one for each variety then sold by Campbell's, transfer the serial logic of the supermarket shelf into painting; the mass-produced consumer good becomes both subject and method of art.",
+    "tags": [
+      "Pop-Art",
+      "consumerism",
+      "advertising",
+      "seriality",
+      "USA"
+    ],
+    "credit": "Andy Warhol, 1962"
+  },
+  {
+    "filename": "warhol_brillo_box_1964.jpg",
+    "title": "Brillo Box",
+    "description": "Andy Warhol's plywood replicas of Brillo soap-pad shipping cartons, exhibited stacked as in a stockroom, collapse the distinction between artwork and commodity packaging.",
+    "tags": [
+      "Pop-Art",
+      "consumerism",
+      "commodity",
+      "sculpture",
+      "USA"
+    ],
+    "credit": "Andy Warhol, 1964"
+  },
+  {
+    "filename": "kruger_i_shop_therefore_i_am_1990.jpg",
+    "title": "Untitled (I Shop Therefore I Am)",
+    "description": "Barbara Kruger's caption in her signature advertising typography rewrites Descartes for the age of shopping, condensing Western consumer identity into a single slogan.",
+    "tags": [
+      "consumerism",
+      "advertising",
+      "text",
+      "identity",
+      "feminism",
+      "USA"
+    ],
+    "credit": "Barbara Kruger, 1990"
+  },
+  {
+    "filename": "lichtenstein_whaam_1963.jpg",
+    "title": "Whaam!",
+    "description": "Roy Lichtenstein's monumental diptych, adapted from a panel in the war comic All-American Men of War, renders aerial combat in the Ben-Day dots of commercial printing — spectacular violence filtered through mass media.",
+    "tags": [
+      "Pop-Art",
+      "comics",
+      "war",
+      "media",
+      "USA"
+    ],
+    "credit": "Roy Lichtenstein, 1963"
+  },
+  {
+    "filename": "rosler_bringing_the_war_home_1967-72.jpeg",
+    "title": "House Beautiful: Bringing the War Home",
+    "description": "From Martha Rosler's photomontage series splicing Vietnam War photojournalism into the immaculate domestic interiors of American lifestyle magazines, confronting Western comfort with the violence that underwrites it.",
+    "tags": [
+      "photomontage",
+      "Vietnam-War",
+      "domesticity",
+      "media",
+      "war",
+      "USA"
+    ],
+    "credit": "Martha Rosler, photomontage, 1967–72"
+  }
 ]

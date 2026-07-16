@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -29,6 +36,10 @@ body {
 /* Added collapsible section styles */
 .collapsible-section {
   margin-bottom: 16px;
+}
+
+.collapsible-section:last-child {
+  margin-bottom: 0;
 }
 
 .section-toggle {
@@ -117,6 +128,7 @@ body {
 }
 
 .paper-item {
+  text-align: left; /* buttons centre text by default */
   padding: 10px;
   background: #ffffff;
   border: 1px solid #000000;
@@ -147,6 +159,11 @@ body {
   cursor: grabbing;
 }
 
+/* Keep the directional chevron while edge-panning, even over images */
+#viewport.edge-panning .image-item {
+  cursor: inherit;
+}
+
 #board {
   position: absolute;
   width: 5000px;
@@ -155,12 +172,12 @@ body {
   transition: transform 0.1s ease-out;
 }
 
-/* Removed borders and shadows from image items */
 .image-item {
   position: absolute;
   cursor: pointer;
   transition: transform 0.2s ease;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18); /* light shadow separates overlapping images */
 }
 
 .image-item img {
@@ -229,6 +246,9 @@ body {
 
 #modal-info {
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh; /* match #modal-image so tags never overflow the modal */
 }
 
 #modal-title {
@@ -241,6 +261,10 @@ body {
   color: #333333;
   margin-bottom: 16px;
   line-height: 1.6;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 8px; /* room for scrollbar */
 }
 
 #modal-tags {
@@ -257,7 +281,7 @@ body {
   font-size: 12px;
 }
 
-#modal-date {
+#modal-credit {
   font-size: 12px;
   color: #666666;
 }
@@ -306,16 +330,34 @@ body {
 }
 
 #paper-title {
-  font-size: 24px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
   line-height: 1.4;
-  margin: 0 0 24px 0;
+  margin: 0 0 8px 0; /* tight to the subtitle/author line below */
+  text-align: center;
+}
+
+/* Centred subtitle/author lines at the top of a paper */
+#paper-body .paper-meta {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+#paper-body .paper-meta-last {
+  margin-bottom: 40px; /* clear gap before the body text */
+}
+
+#paper-body p:empty {
+  display: none; /* parser artifacts around block elements */
 }
 
 .paper-image {
-  max-width: 100%;
-  margin: 16px 0;
+  width: 70%;
+  max-width: 70%;
+  margin: 16px auto;
   cursor: pointer;
-  border: 1px solid #000000;
   transition: opacity 0.2s ease;
   display: block;
 }
@@ -355,6 +397,23 @@ body {
 #paper-body a {
   color: #000000;
   text-decoration: underline;
+}
+
+#paper-body blockquote {
+  margin: 16px 0;
+  padding-left: 16px;
+  border-left: 2px solid #000000;
+  color: #555555;
+}
+
+#paper-body ul,
+#paper-body ol {
+  margin: 0 0 16px 0;
+  padding-left: 24px;
+}
+
+#paper-body li {
+  margin-bottom: 6px;
 }
 
 #paper-body a:hover {
