@@ -151,7 +151,9 @@ The seminar has compiled images of social stereotypes, idealized representations
 
 **Participants:** Marie Herrndorff, Wera Hertenstein, Michael Janus, Lorena Karn, Darius Kühner, Florian Lips, Daniel Lythgoe, Michelle Nikolas, Alena Poser, Yidan Qin, Helena Schenk, Leonie Werner, and Julia Ziegler
 
-**Director:** Matthias Bruhn (Art Research & Media Philosophy)`
+**Director:** Matthias Bruhn (Art Research & Media Philosophy)
+
+*Website design and development: Daniel Louis Lythgoe*`
 
 function showAboutModal() {
   showPaperModal({ title: ABOUT_TITLE, content: ABOUT_CONTENT })
