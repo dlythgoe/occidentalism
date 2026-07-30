@@ -149,11 +149,11 @@ What does the term "the West" still stand for today? In the wake of globalizatio
 
 The seminar has compiled images of social stereotypes, idealized representations, and caricatures that do not necessarily originate in the West but are somehow meant to represent it. For the tour, the gatehouse in the entrance area of the HfG will be redesigned to display a selection of examples. The architecture itself serves as a model of Western modernism.
 
-**Participants:** Marie Herrndorff, Wera Hertenstein, Michael Janus, Lorena Karn, Darius Kühner, Florian Lips, Daniel Lythgoe, Michelle Nikolas, Alena Poser, Yidan Qin, Helena Schenk, Leonie Werner, and Julia Ziegler
+**Participants:** Marie Herrndorff, Wera Hertenstein, Michael Janus, Lorena Karn, Darius Kühner, Florian Lips, Daniel Louis Lythgoe, Michelle Nikolas, Alena Poser, Yidan Qin, Helena Schenk, Leonie Werner, and Julia Ziegler
 
 **Director:** Matthias Bruhn (Art Research & Media Philosophy)
 
-*Website design and development: Daniel Louis Lythgoe*`
+**Website design and development:** Daniel Louis Lythgoe`
 
 function showAboutModal() {
   showPaperModal({ title: ABOUT_TITLE, content: ABOUT_CONTENT })
