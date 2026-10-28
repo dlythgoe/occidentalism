@@ -1,7 +1,3 @@
-# Image Cloud Viewer
-
-A minimalist image gallery viewer with tag-based filtering and accompanying papers/essays section. Designed to be hosted on GitHub Pages.
-
 ## Folder Structure
 
 \`\`\`
@@ -58,37 +54,3 @@ The `data/index.json` file contains an array of image objects:
 - **Tag Buttons**: Filter images by tag
 - **Clear Filters**: Reset all tag filters
 - **Reset View**: Return to centered view
-
-## Important
-
-This app requires a web server (uses `fetch()` for JSON). Opening `index.html` directly with `file://` will NOT work. GitHub Pages provides the server automatically.
-
----
-
-## Hosting on GitHub Pages
-
-### Step 1: Create a GitHub Account
-Go to [github.com](https://github.com) and sign up if needed.
-
-### Step 2: Create a New Repository
-1. Click "+" > "New repository"
-2. Name it (e.g., `image-cloud-viewer`)
-3. Keep it **Public**
-4. Click "Create repository"
-
-### Step 3: Upload Files
-1. Click "Add file" > "Upload files"
-2. Drag all files/folders: `index.html`, `style.css`, `app.js`, `README.md`, `data/`, `images/`
-3. Click "Commit changes"
-
-### Step 4: Enable GitHub Pages
-1. Go to repo "Settings"
-2. Click "Pages" in left sidebar
-3. Under "Source", select "Deploy from a branch"
-4. Select `main` branch and `/ (root)`
-5. Click "Save"
-
-### Step 5: Access Your Site
-Wait 1-2 minutes, then visit: `https://YOUR-USERNAME.github.io/REPO-NAME/`
-
-To update later, edit files directly on GitHub or push changes locally.
