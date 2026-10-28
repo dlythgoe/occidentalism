@@ -1,6 +1,6 @@
 ## Folder Structure
 
-\`\`\`
+```
 your-repo/
 ├── index.html          # Main HTML file
 ├── style.css           # Stylesheet
@@ -12,13 +12,13 @@ your-repo/
     ├── 1.jpg           # Your images go here
     ├── 2.jpg
     └── ...
-\`\`\`
+```
 
 ## Data Structure
 
 The `data/index.json` file contains an array of image objects:
 
-\`\`\`json
+```json
 {
   "filename": "example.jpg",
   "title": "Image Title",
@@ -26,7 +26,7 @@ The `data/index.json` file contains an array of image objects:
   "tags": ["tag1", "tag2", "tag3"],
   "credit": "Artist/Copyright-holder, Medium/Material, Place, Year"
 }
-\`\`\`
+```
 
 ### Fields
 
